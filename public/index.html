@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f5ef" />
+    <title>Золотая осень — загородный отдых среди природы</title>
+    <meta
+      name="description"
+      content="База отдыха «Золотая осень»: домики у реки, большой A-frame, бани и беседки. Изучите генплан территории и выберите интересующий объект на интерактивной карте."
+    />
+    <meta
+      property="og:title"
+      content="Золотая осень — загородный отдых среди природы"
+    />
+    <meta
+      property="og:description"
+      content="Ваше место для отдыха. Домики, бани и беседки на интерактивной карте территории."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="./assets/images/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <script type="module" src="./assets/js/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">К содержанию</a>
+    <svg
+      class="svg-library"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <symbol id="leaf" viewBox="0 0 48 48">
+        <path
+          d="M24 43V22m0 11C8 34 5 20 6 9c12 1 18 6 18 17C24 12 32 5 43 4c1 14-3 24-19 25M11 16l13 17m13-22L24 29"
+        />
+      </symbol>
+      <symbol id="arrow" viewBox="0 0 24 24">
+        <path d="M4 12h16m-6-6 6 6-6 6" />
+      </symbol>
+      <symbol id="house" viewBox="0 0 48 48">
+        <path d="m4 23 20-17 20 17M10 19v23h28V19M20 42V28h8v14M17 17h14" />
+      </symbol>
+      <symbol id="waves" viewBox="0 0 48 48">
+        <path
+          d="M4 15c7-9 13 9 20 0s13 9 20 0M4 25c7-9 13 9 20 0s13 9 20 0M4 35c7-9 13 9 20 0s13 9 20 0"
+        />
+      </symbol>
+      <symbol id="tree" viewBox="0 0 48 48">
+        <path d="m24 4-12 16h7L8 34h32L29 20h7L24 4Zm0 30v14" />
+      </symbol>
+      <symbol id="sun" viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="10" />
+        <path
+          d="M24 2v6m0 32v6M2 24h6m32 0h6M8 8l5 5m22 22 5 5M40 8l-5 5M13 35l-5 5"
+        />
+      </symbol>
+    </svg>
+    <header class="site-header wrap">
+      <a class="brand" href="#" aria-label="Золотая осень — главная"
+        ><svg><use href="#leaf" /></svg
+        ><span>Золотая осень<small>БАЗА ОТДЫХА</small></span></a
+      >
+      <nav class="desktop-nav" aria-label="Основная навигация">
+        <a href="#about">О месте</a><a href="#territory">Карта территории</a
+        ><a href="#stay">Домики и отдых</a><a href="#contacts">Контакты</a>
+      </nav>
+      <a class="header-cta" href="#territory"
+        >Выбрать домик <svg><use href="#arrow" /></svg
+      ></a>
+      <button
+        class="menu-toggle icon-button"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <span></span><span></span>
+      </button>
+      <nav id="mobile-nav" hidden aria-label="Мобильная навигация">
+        <a href="#about">О месте</a><a href="#territory">Карта территории</a
+        ><a href="#stay">Домики и отдых</a><a href="#contacts">Контакты</a>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <picture class="hero-photo"
+          ><source
+            media="(max-width: 700px)"
+            srcset="./assets/images/nature-demo-small.webp" />
+          <img
+            src="./assets/images/nature-demo.webp"
+            width="1920"
+            height="1280"
+            fetchpriority="high"
+            alt="Горное озеро и лес — демонстрационная фотография, не территория базы отдыха"
+        /></picture>
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="eyebrow"><span></span> БЛИЖЕ К ПРИРОДЕ. БЛИЖЕ К СЕБЕ.</p>
+          <h1 id="hero-title">Золотая<br /><em>осень</em></h1>
+          <p class="hero-subtitle">Загородный отдых среди природы</p>
+          <div class="hero-actions">
+            <a class="button button-light" href="#territory"
+              >Выбрать домик <svg><use href="#arrow" /></svg></a
+            ><a class="hero-secondary" href="#territory"
+              >Посмотреть территорию <span>↘</span></a
+            >
+          </div>
+        </div>
+        <div class="hero-foot">
+          <span class="demo-label"
+            >Демонстрационное фото · не территория базы</span
+          ><a href="#about" class="scroll-link"
+            >Время замедлиться <span>↓</span></a
+          >
+        </div>
+        <div class="hero-stamp" aria-hidden="true">
+          <svg><use href="#leaf" /></svg><span>ПРИРОДА<br />ВДОХНОВЛЯЕТ</span>
+        </div>
+      </section>
+      <section class="intro wrap section" id="about">
+        <div>
+          <p class="eyebrow">ВАШ МАЛЕНЬКИЙ ПОБЕГ ИЗ ГОРОДА</p>
+          <h2>Больше природы.<br /><em>Меньше спешки.</em></h2>
+        </div>
+        <div class="intro-copy">
+          <p>
+            Оставить дела на потом. Вдохнуть поглубже. Провести время с теми,
+            кто рядом.
+          </p>
+          <p class="muted">
+            «Золотая осень» — проект загородного отдыха с домиками у реки,
+            банями и беседками. Познакомьтесь с территорией и найдите своё место
+            на карте.
+          </p>
+          <a class="text-link" href="#territory"
+            >Знакомство начинается здесь <svg><use href="#arrow" /></svg
+          ></a>
+        </div>
+      </section>
+      <div class="nature-strip wrap">
+        <span
+          ><svg><use href="#house" /></svg> Домики для отдыха</span
+        ><span
+          ><svg><use href="#waves" /></svg> Река и пляж</span
+        ><span
+          ><svg><use href="#tree" /></svg> В окружении природы</span
+        ><span
+          ><svg><use href="#sun" /></svg> Время для себя</span
+        >
+      </div>
+      <section
+        class="territory-section section"
+        id="territory"
+        aria-labelledby="map-heading"
+      >
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">ИССЛЕДУЙТЕ ТЕРРИТОРИЮ</p>
+              <h2 id="map-heading">
+                У каждого места —<br /><em>своё настроение.</em>
+              </h2>
+            </div>
+            <p class="section-description">
+              Выберите домик, баню или беседку прямо на карте. Посмотрите
+              расположение и узнайте подробности.
+            </p>
+          </div>
+          <div class="map-layout">
+            <div class="map-shell" id="map-shell">
+              <div class="map-top">
+                <span><span class="live-dot"></span> Генплан территории</span
+                ><button
+                  id="fullscreen"
+                  class="map-expand"
+                  aria-label="Открыть карту на весь экран"
+                  aria-pressed="false"
+                >
+                  На весь экран <span>⛶</span>
+                </button>
+              </div>
+              <div
+                class="map-viewport"
+                id="map-viewport"
+                aria-label="Интерактивный генплан"
+                aria-describedby="map-help"
+              >
+                <svg
+                  id="territory-map"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 1084 1280"
+                  role="group"
+                  aria-label="Объекты базы отдыха"
+                >
+                  <image
+                    href="./assets/images/masterplan.webp"
+                    width="1084"
+                    height="1280"
+                  />
+                  <g id="map-areas"></g>
+                </svg>
+                <div class="map-tooltip" id="map-tooltip" hidden></div>
+              </div>
+              <div class="map-controls" aria-label="Масштаб карты">
+                <button id="zoom-in" aria-label="Приблизить карту">+</button
+                ><span id="zoom-level" aria-live="polite">100%</span
+                ><button id="zoom-out" aria-label="Отдалить карту">−</button
+                ><button id="zoom-reset" aria-label="Общий вид карты">↺</button>
+              </div>
+              <div class="map-bottom" id="map-help">
+                Нажмите на объект, чтобы узнать больше
+              </div>
+            </div>
+            <aside class="map-directory" aria-label="Список объектов">
+              <div class="directory-heading">
+                <span class="eyebrow">ВАШЕ МЕСТО ОТДЫХА</span>
+                <h3>Что вам по душе?</h3>
+              </div>
+              <div class="filters" role="group" aria-label="Тип объекта">
+                <button data-filter="house" class="active" aria-pressed="true">
+                  Домики</button
+                ><button data-filter="bath" aria-pressed="false">Бани</button
+                ><button data-filter="gazebo" aria-pressed="false">
+                  Беседки</button
+                ><button data-filter="place" aria-pressed="false">Ещё</button>
+              </div>
+              <p class="list-caption" id="list-caption" aria-live="polite"></p>
+              <div id="object-list" class="object-list"></div>
+              <div class="directory-note">
+                <svg><use href="#leaf" /></svg>
+                <p>
+                  Знакомьтесь с расположением.<br /><span
+                    >Готовность и условия посещения уточняются.</span
+                  >
+                </p>
+              </div>
+            </aside>
+          </div>
+          <p class="map-disclaimer">
+            Карта основана на предоставленном генплане. Изображения объектов —
+            визуализация; фактический вид и готовность могут отличаться.
+          </p>
+          <p class="touch-tip">
+            На телефоне откройте карту на весь экран: увеличивайте двумя
+            пальцами и перемещайте одним.
+          </p>
+          <noscript
+            ><p>
+              Для выбора объектов на карте включите JavaScript.
+              <a href="./assets/images/masterplan.jpg"
+                >Открыть исходный генплан</a
+              >.
+            </p></noscript
+          >
+        </div>
+      </section>
+      <section class="stay-section section wrap" id="stay">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">ОТДЫХ В ВАШЕМ РИТМЕ</p>
+            <h2>Каждому — <em>своё.</em></h2>
+          </div>
+          <a class="text-link" href="#territory"
+            >Все объекты на карте <svg><use href="#arrow" /></svg
+          ></a>
+        </div>
+        <div class="stay-grid">
+          <article class="stay-card">
+            <div class="stay-art art-house" aria-hidden="true">
+              <span class="art-number">01 / У РЕКИ</span
+              ><svg viewBox="0 0 360 200">
+                <path
+                  d="M25 171h310M65 149V92l66-46 66 46v57M58 92h145L131 39 58 92Zm20 0v57m104-57v57M113 149V99h40v50m-20-50v50M87 109h15v19H87Zm73 0h15v19h-15ZM230 150V71m-29 60 29-45 29 45m-48-25 19-35 19 35M47 182c30-15 48 15 78 0s48 15 78 0 48 15 78 0"
+                /></svg
+              ><span class="art-caption">Эскиз · фотографии скоро</span>
+            </div>
+            <div class="stay-copy">
+              <h3>Домики у реки</h3>
+              <p>
+                Семь небольших домиков вдоль берега. Выберите расположение,
+                которое вам ближе.
+              </p>
+              <button class="text-link" data-select="river-1">
+                Найти свой домик <svg><use href="#arrow" /></svg>
+              </button>
+            </div>
+          </article>
+          <article class="stay-card">
+            <div class="stay-art art-aframe" aria-hidden="true">
+              <span class="art-number">02 / ОСОБЕННЫЙ ФОРМАТ</span
+              ><svg viewBox="0 0 360 200">
+                <path
+                  d="M25 174h310M95 162 175 28l81 134H95Zm17 0L175 53l64 109M175 53v109m-33-57h65m-78 26h94M165 162v-31h22v31M60 163V95m-23 53 23-39 23 39m-38-23 15-30 15 30M281 163V84m-23 51 23-37 23 37m-38-25 15-26 15 26"
+                /></svg
+              ><span class="art-caption">Эскиз · фотографии скоро</span>
+            </div>
+            <div class="stay-copy">
+              <h3>Большой A-frame</h3>
+              <p>
+                Выразительная архитектура и собственное место в верхней части
+                территории.
+              </p>
+              <button class="text-link" data-select="a-frame">
+                Рассмотреть поближе <svg><use href="#arrow" /></svg>
+              </button>
+            </div>
+          </article>
+          <article class="stay-card">
+            <div class="stay-art art-bath" aria-hidden="true">
+              <span class="art-number">03 / МОМЕНТЫ ТЕПЛА</span
+              ><svg viewBox="0 0 360 200">
+                <path
+                  d="M25 174h310M76 157V89h169v68H76ZM64 89l30-29h132l30 29H64Zm24 15h145M88 118h145M88 133h145m-64 24v-53h30v53m-98-53h33v29h-33v-29Zm58-44V43h16v17m-8-27c-14-9 12-14 0-26M285 158V93m-23 50 23-37 23 37m-38-24 15-26 15 26"
+                /></svg
+              ><span class="art-caption">Эскиз · фотографии скоро</span>
+            </div>
+            <div class="stay-copy">
+              <h3>Бани и беседки</h3>
+              <p>
+                Для тёплых встреч и неспешных разговоров. Две бани и три беседки
+                на генплане.
+              </p>
+              <button class="text-link" data-select="bath-1">
+                Выбрать место <svg><use href="#arrow" /></svg>
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="contact-section wrap" id="contacts">
+        <div>
+          <p class="eyebrow">ДО ВСТРЕЧИ НА ПРИРОДЕ</p>
+          <h2>Хороший отдых начинается<br /><em>с простого желания.</em></h2>
+          <p>
+            Выберите место на карте. Даты, стоимость и детали<br
+              class="desktop-break"
+            />
+            можно будет уточнить у администрации.
+          </p>
+          <button class="button button-green" id="contact-button">
+            Связаться с нами <svg><use href="#arrow" /></svg>
+          </button>
+          <p class="contact-caption" id="contact-caption">
+            Контакты базы готовятся к публикации.
+          </p>
+        </div>
+        <div class="contact-illustration" aria-hidden="true">
+          <svg><use href="#leaf" /></svg><span>ВРЕМЯ БЫТЬ БЛИЖЕ</span>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer wrap">
+      <a class="brand" href="#"
+        ><svg><use href="#leaf" /></svg
+        ><span>Золотая осень<small>БАЗА ОТДЫХА</small></span></a
+      >
+      <p>Загородный отдых среди природы</p>
+      <span>© <span id="year">2026</span> Золотая осень</span>
+      <p class="footer-note">
+        Демонстрационная версия. Бронирование пока не открыто.
+      </p>
+    </footer>
+    <dialog
+      id="object-dialog"
+      class="object-dialog"
+      aria-labelledby="object-title"
+    >
+      <button class="dialog-close icon-button" aria-label="Закрыть карточку">
+        ×
+      </button>
+      <div id="object-detail"></div>
+    </dialog>
+    <dialog
+      id="contact-dialog"
+      class="contact-dialog"
+      aria-labelledby="contact-title"
+    >
+      <button class="dialog-close icon-button" aria-label="Закрыть">×</button>
+      <p class="eyebrow">БУДЕМ НА СВЯЗИ</p>
+      <h2 id="contact-title">Контакты скоро появятся</h2>
+      <div id="contact-content"></div>
+      <button class="button button-green contact-ok">Понятно</button>
+    </dialog>
+  </body>
+</html>

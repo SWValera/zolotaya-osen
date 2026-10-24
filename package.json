@@ -1,0 +1,11 @@
+{
+  "name": "zolotaya-osen",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 8080 --bind 127.0.0.1 --directory public",
+    "check": "node --check public/assets/js/app.js && node tests/data.test.mjs",
+    "seo": "node scripts/generate-seo.mjs"
+  }
+}

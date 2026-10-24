@@ -1,0 +1,18 @@
+[
+  {
+    "width": 390,
+    "requests": 7,
+    "resourceBytes": 572156,
+    "domNodes": 324,
+    "externalResources": [],
+    "galleryImages": 0
+  },
+  {
+    "width": 1440,
+    "requests": 7,
+    "resourceBytes": 854436,
+    "domNodes": 324,
+    "externalResources": [],
+    "galleryImages": 0
+  }
+]
