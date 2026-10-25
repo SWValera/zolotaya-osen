@@ -50,7 +50,22 @@ function priceText(object) {
 }
 
 function renderList() {
-  const items = objects.filter((o) => o.type === currentFilter);
+  const mapPosition = (object) => {
+    const points = (object.points || "").split(" ").map((point) => point.split(",").map(Number));
+    if (!points.length || points.some((point) => point.length !== 2 || point.some(Number.isNaN)))
+      return { x: 0, y: 0 };
+    return {
+      x: points.reduce((sum, point) => sum + point[0], 0) / points.length,
+      y: points.reduce((sum, point) => sum + point[1], 0) / points.length,
+    };
+  };
+  const items = objects
+    .filter((o) => o.type === currentFilter)
+    .sort((a, b) => {
+      const first = mapPosition(a);
+      const second = mapPosition(b);
+      return second.y - first.y || first.x - second.x;
+    });
   $("#list-caption").textContent =
     `${types[currentFilter]} на генплане · ${items.length}`;
   $("#object-list").innerHTML = items

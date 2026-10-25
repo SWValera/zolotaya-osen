@@ -5193,3 +5193,19 @@ body {
     font-size: 14px;
   }
 }
+
+/* Keep the main title and the first property introduction visually connected. */
+.home-title {
+  padding-bottom: clamp(14px, 2vw, 24px);
+}
+.intro.wrap {
+  padding-top: clamp(16px, 2vw, 26px);
+}
+@media (max-width: 760px) {
+  .home-title {
+    padding-bottom: 14px;
+  }
+  .intro.wrap {
+    padding-top: 16px;
+  }
+}
