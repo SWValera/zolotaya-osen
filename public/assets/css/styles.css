@@ -1586,6 +1586,33 @@ dialog[open] {
   display: none !important;
 }
 
+/* Official round brand mark in the header and footer. */
+.brand-logo {
+  display: block;
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 3px 12px #0002;
+}
+
+@media (max-width: 760px) {
+  .brand-logo {
+    flex-basis: 56px;
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-logo {
+    flex-basis: 48px;
+    width: 48px;
+    height: 48px;
+  }
+}
+
 /* Reference-inspired property cards and an always-visible mobile section bar. */
 .mobile-quick-nav {
   display: none;
