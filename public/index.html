@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#203d32" />
+    <meta name="theme-color" content="#14251f" />
     <title>Золотая осень — база отдыха | Домики, бани и беседки</title>
     <meta
       name="description"
@@ -18,7 +18,17 @@
       content="10 домиков, 2 бани, 3 беседки и интерактивный план территории. Выберите место и позвоните, чтобы уточнить условия отдыха."
     />
     <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://zolotayaosen.kz/assets/images/objects/a-frame/lounge-window.jpg"
+    />
     <link rel="icon" href="./assets/images/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      as="image"
+      href="./assets/images/objects/a-frame/lounge-window.jpg"
+      fetchpriority="high"
+    />
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <script type="module" src="./assets/js/app.js"></script>
     <link rel="canonical" href="https://zolotayaosen.kz/" />
@@ -87,14 +97,14 @@
       <section class="hero wrap" aria-labelledby="hero-title">
         <div class="hero-content">
           <p class="eyebrow"><span></span> БАЗА ОТДЫХА «ЗОЛОТАЯ ОСЕНЬ»</p>
-          <h1 id="hero-title">Ваш отдых.<br /><em>Ваше место.</em></h1>
+          <h1 id="hero-title">Останьтесь<br />в <em>моменте.</em></h1>
           <p class="hero-subtitle">
-            Домики, бани и беседки на одной территории. Выберите место на плане,
-            а по телефону уточните готовность, цену и свободные даты.
+            Тёплый свет дерева, высокие окна и тишина за городом. Выберите
+            место для отдыха и узнайте условия у администрации.
           </p>
           <div class="hero-actions">
             <a class="button button-light" href="#territory">
-              Смотреть территорию <svg><use href="#arrow" /></svg>
+              Найти своё место <svg><use href="#arrow" /></svg>
             </a>
             <a class="hero-call" href="tel:+77763055000">
               <span>Позвонить администрации</span>
@@ -107,17 +117,27 @@
             <div><strong>3</strong><span>беседки</span></div>
           </div>
         </div>
-        <a class="hero-plan" href="#territory" aria-label="Перейти к плану территории">
-          <img
-            src="./assets/images/masterplan.webp"
-            width="1084"
-            height="1280"
-            fetchpriority="high"
-            alt="Генплан территории базы отдыха с отмеченными домиками, банями, беседками и зонами отдыха"
-          />
-          <span class="hero-plan-label"><span class="live-dot"></span> План территории</span>
-          <span class="hero-plan-link">Изучить объекты <span>↗</span></span>
-        </a>
+        <figure class="hero-scene" data-tilt>
+          <div class="hero-orbit" aria-hidden="true"></div>
+          <div class="hero-photo-frame">
+            <img
+              src="./assets/images/objects/a-frame/lounge-window.jpg"
+              width="960"
+              height="1280"
+              fetchpriority="high"
+              alt="Панорамные окна большого A-frame с видом на сосны и уютную зону отдыха"
+            />
+            <figcaption class="hero-photo-caption">
+              <span>01 / 08</span>
+              <strong>Большой A-frame</strong>
+              <span>Дерево · панорамное остекление</span>
+            </figcaption>
+          </div>
+          <span class="hero-scene-note" aria-hidden="true">МЕСТО, ГДЕ ВРЕМЯ ТЕЧЁТ ТИШЕ</span>
+          <a class="hero-scene-link" href="#stay" aria-label="Посмотреть большой A-frame">
+            <span>Откройте дом</span><svg><use href="#arrow" /></svg>
+          </a>
+        </figure>
       </section>
       <section class="intro wrap section" id="about">
         <div>

@@ -521,6 +521,54 @@ viewport.addEventListener(
   { passive: false },
 );
 
+function initPremiumMotion() {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finePointer = window.matchMedia("(pointer: fine)").matches;
+  const revealItems = $$(
+    ".intro > div, .nature-strip > span, .section-heading, .stay-card, .steps-list > li, .contact-section > div",
+  );
+
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    revealItems.forEach((element, index) => {
+      element.dataset.reveal = "";
+      element.style.setProperty("--reveal-delay", `${(index % 4) * 90}ms`);
+    });
+    document.documentElement.classList.add("motion-ready");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.14, rootMargin: "0px 0px -36px 0px" },
+    );
+    revealItems.forEach((element) => observer.observe(element));
+  }
+
+  if (reduceMotion || !finePointer) return;
+  $$('[data-tilt], .stay-card').forEach((element) => {
+    element.addEventListener("pointermove", (event) => {
+      if (event.pointerType !== "mouse") return;
+      const rect = element.getBoundingClientRect();
+      const horizontal = (event.clientX - rect.left) / rect.width - 0.5;
+      const vertical = (event.clientY - rect.top) / rect.height - 0.5;
+      element.style.setProperty("--tilt-x", `${vertical * -5}deg`);
+      element.style.setProperty("--tilt-y", `${horizontal * 7}deg`);
+      element.style.setProperty("--light-x", `${(horizontal + 0.5) * 100}%`);
+      element.style.setProperty("--light-y", `${(vertical + 0.5) * 100}%`);
+    });
+    element.addEventListener("pointerleave", () => {
+      element.style.setProperty("--tilt-x", "0deg");
+      element.style.setProperty("--tilt-y", "0deg");
+      element.style.setProperty("--light-x", "50%");
+      element.style.setProperty("--light-y", "50%");
+    });
+  });
+}
+
+initPremiumMotion();
 buildMap();
 renderList();
 new ResizeObserver(resizeMap).observe(viewport);

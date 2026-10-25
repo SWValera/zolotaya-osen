@@ -1,7 +1,7 @@
 # Изображения и шрифт
 
 - `public/assets/images/masterplan.jpg` — исходное изображение, предоставленное пользователем, 1084 × 1280. Копия без правок. `masterplan.webp` — перекодирование с теми же размерами; объекты не перерисованы и не перемещены. Все SVG-контуры заданы в этой системе координат.
-- `nature-demo.jpg`, `nature-demo.webp`, `nature-demo-small.webp` — демонстрационное фото природы с Unsplash. Оно **не является фотографией базы отдыха**; соответствующая подпись видна в первом экране и в alt. Источник: https://images.unsplash.com/photo-1470770841072-f978cf4d019e . Условия Unsplash: https://unsplash.com/license . Сохранено локально, запросов к фотохостингу при работе сайта нет.
+- `nature-demo.jpg`, `nature-demo.webp`, `nature-demo-small.webp` — неиспользуемые демонстрационные файлы природы с Unsplash. Это не фотографии базы. Источник: https://images.unsplash.com/photo-1470770841072-f978cf4d019e . Условия Unsplash: https://unsplash.com/license . Файлы сохранены локально; на главной сейчас загружается фото большого A-frame.
 - Эскизы в разделе «Каждому — своё» — декоративные SVG, созданные для сайта. Это не изображения реальных домиков; подпись «Эскиз · фотографии скоро» присутствует на каждом.
 - Manrope загружается из локального `assets/fonts/manrope.ttf`. Источник — Google Fonts: https://fonts.google.com/specimen/Manrope . Лицензия SIL Open Font License находится рядом, в `OFL.txt`.
 - Логотип, favicon и пиктограммы — простые SVG, созданные для сайта.
