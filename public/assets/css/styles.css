@@ -1454,6 +1454,7 @@ dialog[open] {
     min-height: 35px;
   }
 }
+
 @media (max-width: 370px) {
   .hero h1 {
     font-size: 72px;
@@ -4941,5 +4942,109 @@ h3,
   }
   .home-gallery-controls {
     inset: auto 10px 10px;
+  }
+}
+
+/* Readable type and stronger contrast over the hero photograph. */
+body {
+  font-size: 16px;
+}
+.hero-content {
+  background: linear-gradient(90deg, #10231df2 0%, #10231de0 42%, #10231d8a 68%, transparent 100%);
+}
+.hero-scene::after {
+  background: linear-gradient(90deg, #10231d88 0%, #10231d24 54%, transparent 100%),
+    linear-gradient(0deg, #10231d72, transparent 45%);
+}
+.hero h1 {
+  font-size: clamp(52px, 6vw, 78px);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  text-shadow: 0 3px 26px #07130fc2;
+}
+.hero h1 em {
+  color: #f0d49b;
+  text-shadow: 0 3px 28px #07130fd9;
+}
+.hero .eyebrow,
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 1.35px;
+}
+.hero-subtitle {
+  font-size: 16px;
+  text-shadow: 0 2px 12px #07130fc9;
+}
+.hero-call span,
+.hero-facts span {
+  font-size: 12px;
+}
+.hero-call strong {
+  font-size: 15px;
+}
+.button,
+.hero-actions .button {
+  font-size: 13px;
+}
+.mobile-quick-nav a,
+.site-header nav a {
+  font-size: 13px;
+}
+.intro > p,
+.section-description,
+.bath-feature-copy > p:not(.eyebrow),
+.stay-copy > p,
+.selection-intro > p:not(.eyebrow),
+.faq-list details p,
+.route-card > div > p:not(.eyebrow),
+.detail-description {
+  font-size: 15px;
+  line-height: 1.8;
+}
+.stay-copy h3 {
+  font-size: clamp(24px, 2vw, 30px);
+}
+.art-caption,
+.bath-feature-meta span,
+.detail-note,
+.price-block span {
+  font-size: 13px;
+}
+.image-kind {
+  font-size: 10px;
+}
+.status-badge {
+  font-size: 12px;
+}
+.text-link {
+  font-size: 14px;
+}
+@media (max-width: 760px) {
+  .hero-content {
+    background: linear-gradient(0deg, #10231df5 0%, #10231de8 40%, #10231d75 68%, transparent 100%);
+  }
+  .hero-scene::after {
+    background: linear-gradient(0deg, #10231d9c 0%, transparent 67%);
+  }
+  .hero h1 {
+    max-width: 100%;
+    font-size: clamp(42px, 11.5vw, 56px);
+  }
+  .hero-subtitle {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .hero-actions .button,
+  .button {
+    font-size: 13px;
+  }
+  .hero-call span {
+    font-size: 12px;
+  }
+  .hero-call strong {
+    font-size: 14px;
+  }
+  .mobile-quick-nav a {
+    font-size: 12px;
   }
 }

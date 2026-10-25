@@ -144,7 +144,17 @@ export const objects = [
     "bath",
     "Верхняя баня на правой стороне генплана. Состав банного комплекса и условия посещения уточняются.",
     "721,350 818,350 830,426 812,440 704,432 704,389",
-    { priceUnit: "час" },
+    {
+      priceUnit: "час",
+      photos: [
+        { src: "./assets/images/objects/bath-1/lounge.jpg", alt: "Комната отдыха первой бани с диваном и столом" },
+        { src: "./assets/images/objects/bath-1/lounge-detail.jpg", alt: "Стол и деревянный буфет в комнате отдыха бани" },
+        { src: "./assets/images/objects/bath-1/steam-room.jpg", alt: "Парная первой бани с деревянными полками и печью" },
+        { src: "./assets/images/objects/bath-1/steam-room-detail.jpg", alt: "Печь-каменка и полки в парной" },
+        { src: "./assets/images/objects/bath-1/shower.jpg", alt: "Душевая комната при бане" },
+        { src: "./assets/images/objects/bath-1/bathroom.jpg", alt: "Санузел и раковина в бане" },
+      ],
+    },
   ),
   object(
     "bath-2",
