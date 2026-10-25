@@ -275,7 +275,69 @@ function renderGallery(object) {
     index = (index + 1) % photos.length;
     update();
   };
+  attachGallerySwipe(root, buttons[0].onclick, buttons[1].onclick);
   update();
+}
+function attachGallerySwipe(element, previous, next) {
+  let start = null;
+  element.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" || event.target.closest("button")) return;
+    start = { x: event.clientX, y: event.clientY };
+  }, { passive: true });
+  element.addEventListener("pointerup", (event) => {
+    if (!start) return;
+    const dx = event.clientX - start.x;
+    const dy = event.clientY - start.y;
+    start = null;
+    if (Math.abs(dx) < 42 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+    (dx < 0 ? next : previous)();
+  }, { passive: true });
+  element.addEventListener("pointercancel", () => { start = null; }, { passive: true });
+}
+function initHomeGalleries() {
+  const groups = {
+    "a-frame": objects.filter((o) => o.id === "a-frame"),
+    river: objects.filter((o) => o.id.startsWith("river-")),
+    upper: objects.filter((o) => o.id.startsWith("upper-")),
+    bath: objects.filter((o) => o.id.startsWith("bath-")),
+    gazebo: objects.filter((o) => o.id.startsWith("gazebo-")),
+  };
+  $$('[data-home-gallery]').forEach((gallery) => {
+    const objectPhotos = (groups[gallery.dataset.homeGallery] || [])
+      .flatMap((o) => o.photos || []);
+    const fallback = $("img", gallery);
+    const photos = objectPhotos.length ? objectPhotos : fallback ? [{ src: fallback.src, alt: fallback.alt }] : [];
+    if (!photos.length) return;
+
+    let index = 0;
+    let image = fallback;
+    if (!image) {
+      image = document.createElement("img");
+      gallery.prepend(image);
+    }
+    image.classList.add("home-gallery-image");
+    image.draggable = false;
+    const update = () => {
+      const photo = photos[index];
+      image.src = typeof photo === "string" ? photo : photo.src;
+      image.alt = typeof photo === "string" ? `Фото ${index + 1}` : photo.alt || `Фото ${index + 1}`;
+      image.dataset.galleryIndex = String(index);
+      gallery.dataset.galleryCount = String(photos.length);
+      const count = $(".home-gallery-count", gallery);
+      if (count) count.textContent = `${index + 1} / ${photos.length}`;
+    };
+    if (photos.length > 1) {
+      const controls = document.createElement("div");
+      controls.className = "home-gallery-controls";
+      controls.innerHTML = '<button type="button" aria-label="Предыдущее фото">‹</button><span class="home-gallery-count" aria-live="polite"></span><button type="button" aria-label="Следующее фото">›</button>';
+      gallery.append(controls);
+      const buttons = $$('button', controls);
+      buttons[0].onclick = () => { index = (index + photos.length - 1) % photos.length; update(); };
+      buttons[1].onclick = () => { index = (index + 1) % photos.length; update(); };
+      attachGallerySwipe(gallery, buttons[0].onclick, buttons[1].onclick);
+    }
+    update();
+  });
 }
 function updateBodyLock() {
   document.body.classList.toggle("locked", fullscreen || detailDialog.open);
@@ -656,6 +718,7 @@ function initPremiumMotion() {
 
 initPremiumMotion();
 initSelectionQuiz();
+initHomeGalleries();
 buildMap();
 renderList();
 new ResizeObserver(resizeMap).observe(viewport);
