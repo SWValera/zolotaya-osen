@@ -5048,3 +5048,135 @@ body {
     font-size: 12px;
   }
 }
+
+/* Site-wide reading size and softer photo-card edges. */
+body {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.desktop-nav,
+.header-cta,
+.mobile-quick-nav a,
+.site-header nav a {
+  font-size: 14px;
+}
+.intro-copy,
+.intro > p,
+.section-description,
+.bath-feature-copy > p:not(.eyebrow),
+.stay-copy > p,
+.selection-intro > p:not(.eyebrow),
+.faq-list details p,
+.route-card > div > p:not(.eyebrow),
+.detail-description,
+.detail-note,
+.map-disclaimer,
+.touch-tip {
+  font-size: 16px;
+  line-height: 1.75;
+}
+.stay-copy > p {
+  margin-bottom: 22px;
+}
+.eyebrow,
+.art-number,
+.image-kind,
+.hero-call span,
+.hero-facts span,
+.bath-feature-meta span,
+.selection-contact span,
+.selection-progress,
+.selection-hint,
+.site-footer > p,
+.site-footer > span,
+.home-gallery-count {
+  font-size: 13px;
+}
+.button,
+.text-link,
+.hero-actions .button,
+.selection-step label,
+.selection-step textarea,
+.detail-note,
+.price-block span,
+.object-row small,
+.directory-note p {
+  font-size: 15px;
+}
+.art-caption {
+  font-size: 14px;
+}
+.selection-progress,
+.selection-hint,
+.list-caption,
+.map-bottom,
+.touch-tip,
+.map-disclaimer {
+  line-height: 1.6;
+}
+.stay-card,
+.stay-art,
+.about-photo,
+.bath-feature-image,
+.route-card,
+.selection-panel,
+.map-directory,
+.map-shell,
+.contact-section.wrap,
+.object-dialog {
+  border-radius: 12px;
+}
+.stay-card {
+  overflow: hidden;
+}
+.stay-art,
+.stay-art-photo img,
+.about-photo img,
+.bath-feature-image img,
+.route-card > img {
+  border-radius: 9px;
+}
+.faq-list details {
+  border-radius: 8px;
+}
+.hero-photo-caption {
+  border-radius: 9px;
+}
+.object-dialog {
+  overflow: auto;
+}
+@media (max-width: 760px) {
+  .desktop-nav,
+  .header-cta,
+  .mobile-quick-nav a,
+  .site-header nav a {
+    font-size: 13px;
+  }
+  .stay-copy > p,
+  .intro-copy,
+  .intro > p,
+  .section-description,
+  .bath-feature-copy > p:not(.eyebrow),
+  .selection-intro > p:not(.eyebrow),
+  .faq-list details p,
+  .route-card > div > p:not(.eyebrow),
+  .detail-description,
+  .detail-note,
+  .map-disclaimer,
+  .touch-tip {
+    font-size: 15px;
+  }
+  .stay-card {
+    border-radius: 11px;
+  }
+  .stay-art,
+  .stay-art-photo img,
+  .about-photo img,
+  .bath-feature-image img,
+  .route-card > img {
+    border-radius: 8px;
+  }
+  .object-dialog {
+    border-radius: 15px 15px 0 0;
+  }
+}
