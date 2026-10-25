@@ -3816,10 +3816,6 @@ h2 em {
 .text-link,
 .image-kind,
 .art-number,
-.selection-progress,
-.selection-contact,
-.selection-actions button,
-.selection-actions a,
 .route-card .eyebrow {
   font-family: "Rubik", Manrope, Arial, sans-serif;
 }
@@ -4182,153 +4178,6 @@ h2 em {
 .stay-copy .text-link {
   margin-top: auto;
 }
-.selection-section {
-  padding-block: clamp(58px, 8vw, 102px);
-  color: #f4f0e6;
-  background: var(--forest-deep);
-}
-.selection-layout {
-  display: grid;
-  grid-template-columns: minmax(250px, 0.78fr) minmax(390px, 1.22fr);
-  gap: clamp(35px, 7vw, 88px);
-  align-items: center;
-}
-.selection-intro h2 {
-  margin: 16px 0;
-  color: #fffaf0;
-  font-size: clamp(32px, 4vw, 48px);
-}
-.selection-intro h2 em {
-  color: #d5bd8d;
-}
-.selection-intro > p:not(.eyebrow) {
-  max-width: 390px;
-  color: #d7ded4;
-  font-size: 14px;
-  line-height: 1.8;
-}
-.selection-contact {
-  display: grid;
-  gap: 5px;
-  margin-top: 28px;
-}
-.selection-contact span {
-  color: #c9c9b8;
-  font-size: 10px;
-}
-.selection-contact a {
-  color: #dfc692;
-  font-size: 14px;
-}
-.selection-panel {
-  padding: clamp(24px, 4vw, 42px);
-  color: #18251f;
-  background: #f8f4ea;
-  box-shadow: 0 22px 60px #07130e36;
-}
-.selection-progress {
-  display: grid;
-  gap: 10px;
-  margin-bottom: 30px;
-  color: #7a745f;
-  font-size: 10px;
-}
-.selection-progress-track {
-  height: 3px;
-  overflow: hidden;
-  background: #ded8ca;
-}
-#selection-progress-fill {
-  width: 20%;
-  height: 100%;
-  display: block;
-  background: var(--gold);
-  transition: width 240ms ease;
-}
-.selection-step {
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-.selection-step[hidden],
-.selection-result[hidden] {
-  display: none;
-}
-.selection-step legend,
-.selection-result h3 {
-  margin-bottom: 22px;
-  font: 400 27px/1.2 var(--serif);
-}
-.selection-step label {
-  display: block;
-  margin-bottom: 8px;
-  color: #646b61;
-  font-size: 11px;
-}
-.selection-step input,
-.selection-step select,
-.selection-step textarea {
-  width: 100%;
-  min-height: 48px;
-  padding: 12px 13px;
-  color: #203c31;
-  border: 1px solid #cfc8b8;
-  border-radius: 1px;
-  background: #fffdf8;
-  font: 13px/1.5 var(--sans);
-}
-.selection-step textarea {
-  resize: vertical;
-}
-.selection-step input:focus,
-.selection-step select:focus,
-.selection-step textarea:focus {
-  outline: 2px solid #bea16c88;
-  outline-offset: 2px;
-}
-.selection-actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 26px;
-}
-.selection-actions [hidden] {
-  display: none;
-}
-.selection-actions button,
-.selection-actions a {
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px 17px;
-  border: 1px solid #203c31;
-  font-size: 10px;
-  cursor: pointer;
-}
-.selection-back {
-  color: #203c31;
-  background: transparent;
-}
-.selection-actions .button-green {
-  color: #fffaf0;
-  background: var(--forest);
-}
-.selection-result pre {
-  overflow-wrap: anywhere;
-  white-space: pre-wrap;
-  color: #61675e;
-  font: 12px/1.7 var(--sans);
-}
-.selection-hint {
-  margin: 17px 0 0;
-  color: #777b70;
-  font-size: 10px;
-  line-height: 1.6;
-}
 .territory-section {
   padding-block: clamp(68px, 8vw, 110px);
   background: #e8e1d2;
@@ -4684,35 +4533,6 @@ h2 em {
   .stay-copy p {
     font-size: 12px;
   }
-  .selection-section {
-    padding-block: 48px;
-  }
-  .selection-layout {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-  .selection-intro h2 {
-    font-size: 34px;
-  }
-  .selection-intro > p:not(.eyebrow) {
-    font-size: 13px;
-  }
-  .selection-panel {
-    padding: 21px 17px;
-  }
-  .selection-step legend,
-  .selection-result h3 {
-    font-size: 23px;
-  }
-  .selection-actions {
-    gap: 8px;
-  }
-  .selection-actions button,
-  .selection-actions a {
-    flex: 1;
-    padding-inline: 10px;
-    font-size: 9px;
-  }
   .territory-section {
     padding-block: 52px;
   }
@@ -4797,7 +4617,6 @@ h1,
 h2,
 .intro h2,
 .bath-feature-copy h2,
-.selection-intro h2,
 .territory-section h2,
 .faq-intro h2,
 .route-card h2,
@@ -4822,7 +4641,6 @@ h3,
   h2,
   .intro h2,
   .bath-feature-copy h2,
-  .selection-intro h2,
   .territory-section h2,
   .faq-intro h2,
   .route-card h2,
@@ -4994,7 +4812,6 @@ body {
 .section-description,
 .bath-feature-copy > p:not(.eyebrow),
 .stay-copy > p,
-.selection-intro > p:not(.eyebrow),
 .faq-list details p,
 .route-card > div > p:not(.eyebrow),
 .detail-description {
@@ -5065,7 +4882,6 @@ body {
 .section-description,
 .bath-feature-copy > p:not(.eyebrow),
 .stay-copy > p,
-.selection-intro > p:not(.eyebrow),
 .faq-list details p,
 .route-card > div > p:not(.eyebrow),
 .detail-description,
@@ -5084,9 +4900,6 @@ body {
 .hero-call span,
 .hero-facts span,
 .bath-feature-meta span,
-.selection-contact span,
-.selection-progress,
-.selection-hint,
 .site-footer > p,
 .site-footer > span,
 .home-gallery-count {
@@ -5095,8 +4908,6 @@ body {
 .button,
 .text-link,
 .hero-actions .button,
-.selection-step label,
-.selection-step textarea,
 .detail-note,
 .price-block span,
 .object-row small,
@@ -5106,8 +4917,6 @@ body {
 .art-caption {
   font-size: 14px;
 }
-.selection-progress,
-.selection-hint,
 .list-caption,
 .map-bottom,
 .touch-tip,
@@ -5119,7 +4928,6 @@ body {
 .about-photo,
 .bath-feature-image,
 .route-card,
-.selection-panel,
 .map-directory,
 .map-shell,
 .contact-section.wrap,
@@ -5157,7 +4965,6 @@ body {
   .intro > p,
   .section-description,
   .bath-feature-copy > p:not(.eyebrow),
-  .selection-intro > p:not(.eyebrow),
   .faq-list details p,
   .route-card > div > p:not(.eyebrow),
   .detail-description,
@@ -5178,5 +4985,142 @@ body {
   }
   .object-dialog {
     border-radius: 15px 15px 0 0;
+  }
+}
+
+/* The map becomes the next full forest-green section after removing the quiz. */
+.territory-section {
+  padding-block: clamp(64px, 8vw, 108px);
+  color: #f4f0e6;
+  background: #19382d;
+}
+.territory-section .eyebrow {
+  color: #d9c392;
+}
+.territory-section h2 {
+  color: #f8f4e9;
+}
+.territory-section h2 em {
+  color: #d8c18f;
+}
+.territory-section .section-description,
+.territory-section .map-disclaimer,
+.territory-section .touch-tip {
+  color: #d2ddd3;
+}
+.territory-section .map-layout {
+  border: 1px solid #bba87575;
+  border-radius: 14px;
+  background: #173329;
+  box-shadow: 0 22px 60px #091a1450;
+}
+.territory-section .map-shell {
+  background: #142d24;
+}
+.territory-section .map-directory {
+  color: #f2eee3;
+  background: #1c3a2e;
+}
+.territory-section .directory-heading h3 {
+  color: #f8f4e9;
+}
+.territory-section .filters {
+  border-bottom-color: #ffffff32;
+}
+.territory-section .filters button {
+  color: #e0e5da;
+  border-color: #d2c29375;
+  border-radius: 7px;
+  background: #18352b;
+}
+.territory-section .filters button.active,
+.territory-section .filters button:hover {
+  color: #182b22;
+  border-color: #d8c18f;
+  background: #d8c18f;
+}
+.territory-section .list-caption {
+  color: #d3c398;
+}
+.territory-section .object-list {
+  scrollbar-color: #b9c4b4 #1c3a2e;
+}
+.territory-section .object-row {
+  color: #f4f0e6;
+  border-bottom-color: #ffffff28;
+}
+.territory-section .object-row:hover,
+.territory-section .object-row.selected {
+  background: #294b3b;
+}
+.territory-section .object-row.selected {
+  box-shadow: inset 3px 0 #d8c18f;
+}
+.territory-section .object-row .row-number,
+.territory-section .row-number {
+  color: #d2bc88;
+}
+.territory-section .row-copy small,
+.territory-section .directory-note p span {
+  color: #c9d2c8;
+}
+.territory-section .directory-note {
+  border-top-color: #ffffff35;
+}
+.territory-section .directory-note svg {
+  color: #d2bc88;
+}
+.territory-section .map-disclaimer {
+  margin-top: 20px;
+}
+.territory-section .map-bottom,
+.territory-section .map-top > span,
+.territory-section .map-expand {
+  color: #20382e;
+  border-color: #e3d4b0;
+  border-radius: 8px;
+  background: #f8f4eaee;
+}
+.territory-section .map-controls {
+  border-radius: 8px;
+}
+@media (min-width: 761px) and (max-width: 1024px) {
+  .territory-section .map-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .territory-section .map-shell {
+    height: min(68vh, 620px);
+    min-height: 500px;
+  }
+  .territory-section .map-directory {
+    max-height: 460px;
+  }
+}
+@media (max-width: 760px) {
+  .territory-section {
+    padding-block: 58px;
+  }
+  .territory-section > .wrap,
+  .territory-section .wrap {
+    width: calc(100% - 34px);
+  }
+  .territory-section .section-heading {
+    gap: 14px;
+  }
+  .territory-section .map-layout {
+    grid-template-columns: minmax(0, 1fr);
+    border-radius: 12px;
+  }
+  .territory-section .map-shell {
+    height: min(68svh, 560px);
+    min-height: 430px;
+  }
+  .territory-section .map-directory {
+    max-height: none;
+    padding: 24px 20px 18px;
+  }
+  .territory-section .map-disclaimer,
+  .territory-section .touch-tip {
+    font-size: 14px;
   }
 }
