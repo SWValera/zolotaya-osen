@@ -212,7 +212,7 @@ function openObject(id, trigger) {
   focusObject(object);
   const status = statusOf(object);
   const facts = [
-    object.capacity != null && ["Вместимость", `${object.capacity} гостей`],
+    object.capacity != null && ["Вместимость", object.capacityLabel || `${object.capacity} гостей`],
     object.beds != null && ["Спальные места", object.beds],
   ].filter(Boolean);
   const factsMarkup = facts.length

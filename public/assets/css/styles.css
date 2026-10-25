@@ -1506,6 +1506,72 @@ dialog[open] {
   }
 }
 
+/* Booking/contact action and opening status on accommodation cards. */
+.stay-call {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 14px;
+  padding: 12px 16px;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 999px;
+  box-shadow: 0 10px 24px #17372b24, inset 0 1px #ffffff45;
+  font-size: 14px;
+  text-align: center;
+}
+
+.stay-call svg {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.stay-art {
+  isolation: isolate;
+}
+
+.coming-soon-mark {
+  position: absolute;
+  z-index: 4;
+  top: 56px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: calc(100% - 32px);
+  padding: 9px 16px;
+  border: 1px solid #e9d5a0b8;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f4e6c6f2, #d8c08ce8);
+  box-shadow: 0 8px 24px #101e1a55, inset 0 1px #fff9;
+  color: #18382d;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+}
+
+/* Crop the source screenshot's embedded image-search badge at its lower edge. */
+#river-houses .stay-art-photo img {
+  height: 130%;
+  object-position: center top;
+}
+
+@media (max-width: 600px) {
+  .stay-call {
+    min-height: 50px;
+    font-size: 14px;
+  }
+  .coming-soon-mark {
+    top: 52px;
+    padding: 8px 12px;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+}
+
 /* Reference-inspired property cards and an always-visible mobile section bar. */
 .mobile-quick-nav {
   display: none;
