@@ -18,7 +18,6 @@ const viewport = $("#map-viewport");
 const map = $("#territory-map");
 const shell = $("#map-shell");
 const detailDialog = $("#object-dialog");
-const contactDialog = $("#contact-dialog");
 const tooltip = $("#map-tooltip");
 let currentFilter = "house";
 let selected = null;
@@ -35,10 +34,10 @@ const pointers = new Map();
 
 function priceText(object) {
   if (object.price === null || object.price === undefined)
-    return "Стоимость уточняется";
+    return "Уточнить стоимость";
   // Валюта всегда задаётся явно вместе с ценой: числовая цена без валюты не публикуется.
   if (!object.price.currency || !Number.isFinite(object.price.amount))
-    return "Стоимость уточняется";
+    return "Уточнить стоимость";
   try {
     return new Intl.NumberFormat("ru-RU", {
       style: "currency",
@@ -46,7 +45,7 @@ function priceText(object) {
       maximumFractionDigits: 0,
     }).format(object.price.amount);
   } catch {
-    return "Стоимость уточняется";
+    return "Уточнить стоимость";
   }
 }
 
@@ -197,10 +196,36 @@ function openObject(id, trigger) {
     shell.scrollIntoView({ behavior: "instant", block: "center" });
   focusObject(object);
   const status = statusOf(object);
-  $("#object-detail").innerHTML =
-    `<div class="detail-visual" id="detail-visual"></div><div class="detail-body"><p class="eyebrow">${escapeHTML(types[object.type] || "Объект территории")}</p><h2 id="object-title">${escapeHTML(object.name)}</h2><span class="status-badge" data-status="${escapeHTML(object.status)}">${escapeHTML(status.label)}</span><p class="detail-description">${escapeHTML(object.description)}</p><dl class="detail-facts"><div><dt>Количество гостей</dt><dd>${escapeHTML(object.capacity ?? "Уточняется")}</dd></div><div><dt>Спальных мест</dt><dd>${escapeHTML(object.beds ?? "Уточняется")}</dd></div></dl><h3>Удобства</h3>${object.amenities.length ? `<ul class="amenities">${object.amenities.map((a) => `<li>${escapeHTML(a)}</li>`).join("")}</ul>` : '<p class="detail-note">Оснащение уточняется. Подтверждённые удобства будут добавлены в карточку.</p>'}<h3>О готовности</h3><p class="detail-note">${escapeHTML(status.note)}${object.opening && ["building", "planned"].includes(object.status) ? ` ${escapeHTML(object.opening)}` : ""}</p><div class="price-block"><strong>${escapeHTML(priceText(object))}</strong><span>${object.price?.currency && Number.isFinite(object.price.amount) ? `за ${escapeHTML(object.priceUnit)}` : "Уточните условия и даты у администрации"}</span></div><button class="button button-green detail-contact">Связаться с нами ${icon("arrow")}</button></div>`;
+  const facts = [
+    object.capacity != null && ["Вместимость", `${object.capacity} гостей`],
+    object.beds != null && ["Спальные места", object.beds],
+  ].filter(Boolean);
+  const factsMarkup = facts.length
+    ? `<dl class="detail-facts">${facts.map(([label, value]) => `<div><dt>${escapeHTML(label)}</dt><dd>${escapeHTML(value)}</dd></div>`).join("")}</dl>`
+    : `<p class="detail-note">Вместимость и комплектацию уточните у администрации.</p>`;
+  const amenitiesMarkup = object.amenities.length
+    ? `<h3>Удобства</h3><ul class="amenities">${object.amenities.map((a) => `<li>${escapeHTML(a)}</li>`).join("")}</ul>`
+    : "";
+  $("#object-detail").innerHTML = `
+    <div class="detail-visual" id="detail-visual"></div>
+    <div class="detail-body">
+      <p class="eyebrow">${escapeHTML(types[object.type] || "Объект территории")}</p>
+      <h2 id="object-title">${escapeHTML(object.name)}</h2>
+      <span class="status-badge" data-status="${escapeHTML(object.status)}">${escapeHTML(status.label)}</span>
+      <p class="detail-description">${escapeHTML(object.description)}</p>
+      ${factsMarkup}
+      ${amenitiesMarkup}
+      <h3>Готовность и посещение</h3>
+      <p class="detail-note">${escapeHTML(status.note)}${object.opening && ["building", "planned"].includes(object.status) ? ` ${escapeHTML(object.opening)}` : ""}</p>
+      <div class="price-block">
+        <strong>${escapeHTML(priceText(object))}</strong>
+        <span>${object.price?.currency && Number.isFinite(object.price.amount) ? `за ${escapeHTML(object.priceUnit)}` : "Стоимость зависит от объекта и даты"}</span>
+      </div>
+      <a class="button button-green detail-contact" href="tel:${escapeHTML(contact.phone)}">
+        Позвонить администрации ${icon("arrow")}
+      </a>
+    </div>`;
   renderGallery(object);
-  $(".detail-contact").addEventListener("click", openContact);
   if (!detailDialog.open) detailDialog.showModal();
   updateBodyLock();
 }
@@ -210,7 +235,7 @@ function renderGallery(object) {
   const placeholder = (message) => {
     root.innerHTML = `${icon(object.type === "house" ? "house" : "leaf")}<span>${escapeHTML(message)}</span>`;
   };
-  if (!photos.length) return placeholder("Фотографии объекта скоро появятся");
+  if (!photos.length) return placeholder("Реальные фотографии объекта пока не добавлены");
   let index = 0;
   const img = document.createElement("img");
   img.decoding = "async";
@@ -253,37 +278,10 @@ function renderGallery(object) {
   update();
 }
 function updateBodyLock() {
-  document.body.classList.toggle(
-    "locked",
-    fullscreen || detailDialog.open || contactDialog.open,
-  );
+  document.body.classList.toggle("locked", fullscreen || detailDialog.open);
 }
 function phoneLabel(phone) {
   return phone === "+77763055000" ? "+7 (776) 305-50-00" : phone;
-}
-function openContact() {
-  const phone = contact.phone.replace(/[^+\d]/g, "");
-  const links = [];
-  if (phone)
-    links.push(
-      `<a class="contact-method" href="tel:${escapeHTML(phone)}">${escapeHTML(phoneLabel(phone))}</a>`,
-    );
-  if (contact.email)
-    links.push(
-      `<a class="contact-method" href="mailto:${escapeHTML(contact.email)}">${escapeHTML(contact.email)}</a>`,
-    );
-  if (/^https:\/\/t\.me\/[\w]+$/.test(contact.telegram))
-    links.push(
-      `<a class="contact-method" href="${escapeHTML(contact.telegram)}" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>`,
-    );
-  $("#contact-title").textContent = links.length
-    ? "Давайте спланируем отдых"
-    : "Контакты скоро появятся";
-  $("#contact-content").innerHTML = links.length
-    ? `<p>Свяжитесь с администрацией, чтобы уточнить готовность объектов, даты и условия отдыха.${selected ? ` Вы выбрали: ${escapeHTML(objects.find((o) => o.id === selected).name)}.` : ""}</p>${links.join("")}`
-    : "<p>Мы готовим информацию для связи. Телефон и другие способы связи появятся здесь после подтверждения администрацией.</p>";
-  contactDialog.showModal();
-  updateBodyLock();
 }
 
 function toggleFullscreen(force) {
@@ -340,12 +338,10 @@ $("#fullscreen").onclick = () => toggleFullscreen();
 $("#zoom-in").onclick = () => setZoom(zoom * 1.35);
 $("#zoom-out").onclick = () => setZoom(zoom / 1.35);
 $("#zoom-reset").onclick = resetMap;
-$("#contact-button").onclick = openContact;
-$(".contact-ok").onclick = () => contactDialog.close();
 $$(".dialog-close").forEach(
   (b) => (b.onclick = () => b.closest("dialog").close()),
 );
-for (const dialog of [detailDialog, contactDialog]) {
+for (const dialog of [detailDialog]) {
   dialog.addEventListener("click", (e) => {
     if (performance.now() <= movedUntil) return;
     if (e.target === dialog) {
@@ -404,14 +400,14 @@ $$("#mobile-nav a").forEach(
     }),
 );
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && !detailDialog.open && !contactDialog.open) {
+  if (e.key === "Escape" && !detailDialog.open) {
     if (fullscreen) toggleFullscreen(false);
     else {
       $("#mobile-nav").hidden = true;
       menu.setAttribute("aria-expanded", "false");
     }
   }
-  if (!fullscreen || detailDialog.open || contactDialog.open) return;
+  if (!fullscreen || detailDialog.open) return;
   if (e.key === "Tab") {
     const focusables = $$('button:not(:disabled),[tabindex="0"]', shell);
     const first = focusables[0],
@@ -530,6 +526,5 @@ renderList();
 new ResizeObserver(resizeMap).observe(viewport);
 $("#year").textContent = new Date().getFullYear();
 if (contact.phone) {
-  $("#contact-caption").textContent = phoneLabel(contact.phone);
-  $("#contact-button").innerHTML = `Связаться с нами ${icon("arrow")}`;
+  $("#contact-caption").textContent = `Телефон администрации: ${phoneLabel(contact.phone)}`;
 }

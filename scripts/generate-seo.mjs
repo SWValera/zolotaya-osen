@@ -30,8 +30,8 @@ html = html
   .replace(/\n[ \t]*<link\s+rel="canonical"[^>]*>/g, "")
   .replace(/\n[ \t]*<meta\s+property="og:url"[^>]*>/g, "");
 html = html.replace(
-  "</head>",
-  `  <link rel="canonical" href="${origin}/">\n  <meta property="og:url" content="${origin}/">\n</head>`,
+  /\n[ \t]*<\/head>/,
+  `\n    <link rel="canonical" href="${origin}/" />\n    <meta property="og:url" content="${origin}/" />\n  </head>`,
 );
 await writeFile(file, html);
 console.log("Созданы robots.txt, sitemap.xml, canonical и og:url для", origin);
