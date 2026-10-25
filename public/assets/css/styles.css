@@ -3590,3 +3590,127 @@ h2 em {
     transform: none;
   }
 }
+
+/* Final mobile viewport fixes: these rules must follow every legacy breakpoint. */
+@media (max-width: 760px) {
+  html,
+  body {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+  main#main {
+    width: 100%;
+    max-width: none;
+    overflow-x: clip;
+  }
+  .site-header.wrap,
+  .mobile-quick-nav {
+    width: 100vw;
+    max-width: none;
+    margin-inline: calc(50% - 50vw);
+  }
+  .site-header.wrap {
+    height: 70px;
+    padding-inline: 17px;
+  }
+  .mobile-quick-nav {
+    top: 70px;
+  }
+  .hero.wrap {
+    width: 100vw;
+    max-width: none;
+    min-height: 0;
+    height: auto;
+    margin-inline: calc(50% - 50vw);
+    display: flex;
+    flex-direction: column-reverse;
+    overflow: hidden;
+    border-radius: 0;
+  }
+  .hero-scene {
+    width: 100%;
+    height: clamp(430px, 69svh, 720px);
+    min-height: 430px;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #14251f;
+  }
+  .hero-scene::before,
+  .hero-scene::after,
+  .hero-orbit,
+  .hero-scene-note,
+  .hero-scene-link {
+    display: none;
+  }
+  .hero-photo-frame {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    aspect-ratio: auto;
+    box-shadow: none;
+    transform: none;
+    animation: none;
+  }
+  .hero-photo-frame::before {
+    display: none;
+  }
+  .hero-photo-frame::after {
+    border: 0;
+    box-shadow: none;
+    background: linear-gradient(180deg, #101a1808 45%, #101a182e);
+  }
+  .hero-photo-frame > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 54%;
+    transform: scale(1.02);
+    animation: imageBreathe 20s ease-in-out infinite alternate;
+  }
+  .hero-photo-caption {
+    right: 19px;
+    bottom: 18px;
+    left: 19px;
+    padding: 28px 22px 20px;
+  }
+  .stay-grid {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+  .stay-card {
+    display: flex;
+    flex-direction: column;
+    padding: 9px 9px 20px;
+  }
+  .stay-art {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 1.32 / 1;
+    padding: 20px;
+  }
+  .stay-copy {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 19px 11px 0;
+  }
+  .stay-copy .text-link {
+    margin-top: auto;
+  }
+}
+@media (min-width: 761px) {
+  .stay-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 761px) and (max-width: 1050px) {
+  .stay-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
