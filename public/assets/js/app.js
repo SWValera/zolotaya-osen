@@ -260,7 +260,7 @@ function renderGallery(object) {
   const controls = document.createElement("div");
   controls.className = "gallery-controls";
   controls.innerHTML =
-    '<button aria-label="Предыдущее фото">‹</button><span aria-live="polite"></span><button aria-label="Следующее фото">›</button>';
+    '<button aria-label="Предыдущее фото">‹</button><button aria-label="Следующее фото">›</button>';
   if (photos.length > 1) root.append(controls);
   const update = () => {
     const photo = photos[index];
@@ -271,7 +271,6 @@ function renderGallery(object) {
     img.hidden = false;
     $(".photo-error", root)?.remove();
     img.src = typeof photo === "string" ? photo : photo.src;
-    $("span", controls).textContent = `${index + 1} / ${photos.length}`;
   };
   img.addEventListener("error", () => {
     img.hidden = true;
@@ -338,13 +337,11 @@ function initHomeGalleries() {
       image.alt = typeof photo === "string" ? `Фото ${index + 1}` : photo.alt || `Фото ${index + 1}`;
       image.dataset.galleryIndex = String(index);
       gallery.dataset.galleryCount = String(photos.length);
-      const count = $(".home-gallery-count", gallery);
-      if (count) count.textContent = `${index + 1} / ${photos.length}`;
     };
     if (photos.length > 1) {
       const controls = document.createElement("div");
       controls.className = "home-gallery-controls";
-      controls.innerHTML = '<button type="button" aria-label="Предыдущее фото">‹</button><span class="home-gallery-count" aria-live="polite"></span><button type="button" aria-label="Следующее фото">›</button>';
+      controls.innerHTML = '<button type="button" aria-label="Предыдущее фото">‹</button><button type="button" aria-label="Следующее фото">›</button>';
       gallery.append(controls);
       const buttons = $$('button', controls);
       buttons[0].onclick = () => { index = (index + photos.length - 1) % photos.length; update(); };

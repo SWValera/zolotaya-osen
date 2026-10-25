@@ -1533,9 +1533,10 @@ dialog[open] {
 .coming-soon-mark {
   position: absolute;
   z-index: 4;
-  top: 56px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 14px;
+  right: 14px;
+  left: auto;
+  transform: none;
   max-width: calc(100% - 32px);
   padding: 9px 16px;
   border: 1px solid #e9d5a0b8;
@@ -1548,7 +1549,7 @@ dialog[open] {
   letter-spacing: 0.08em;
   line-height: 1.2;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: none;
   white-space: nowrap;
   backdrop-filter: blur(10px);
 }
@@ -1565,11 +1566,24 @@ dialog[open] {
     font-size: 14px;
   }
   .coming-soon-mark {
-    top: 52px;
+    top: 12px;
+    right: 12px;
     padding: 8px 12px;
     font-size: 11px;
     letter-spacing: 0.06em;
   }
+}
+
+/* Keep every photo free of decorative text; only the opening status remains. */
+.stay-art-photo .art-number,
+.stay-art-photo .image-kind,
+.stay-art-photo .stay-count,
+.stay-art-photo .art-caption,
+.home-gallery-count,
+.gallery-controls span,
+.about-photo > span,
+.bath-feature-image figcaption {
+  display: none !important;
 }
 
 /* Reference-inspired property cards and an always-visible mobile section bar. */
