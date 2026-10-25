@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "zolotaya-osen",
+  "workers_dev": true,
   "compatibility_date": "2026-10-24",
   "assets": {
     "directory": "./public",
