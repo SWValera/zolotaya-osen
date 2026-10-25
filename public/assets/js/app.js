@@ -521,6 +521,92 @@ viewport.addEventListener(
   { passive: false },
 );
 
+function initSelectionQuiz() {
+  const form = $("#selection-form");
+  if (!form) return;
+  const steps = $$(".selection-step", form);
+  const nextButton = $("#selection-next");
+  const backButton = $("#selection-back");
+  const submitButton = $("#selection-submit");
+  const progressLabel = $("#selection-progress-label");
+  const progressFill = $("#selection-progress-fill");
+  const result = $("#selection-result");
+  const summary = $("#selection-summary");
+  let activeStep = 0;
+
+  function showStep() {
+    steps.forEach((step, index) => {
+      step.hidden = index !== activeStep;
+    });
+    progressLabel.textContent = `Вопрос ${activeStep + 1} из ${steps.length}`;
+    progressFill.style.width = `${((activeStep + 1) / steps.length) * 100}%`;
+    backButton.hidden = activeStep === 0;
+    nextButton.hidden = activeStep === steps.length - 1;
+    submitButton.hidden = activeStep !== steps.length - 1;
+  }
+
+  function currentStepIsValid() {
+    const fields = $$('[required]', steps[activeStep]);
+    const invalid = fields.find((field) => !field.checkValidity());
+    if (invalid) {
+      invalid.reportValidity();
+      return false;
+    }
+    return true;
+  }
+
+  nextButton.addEventListener("click", () => {
+    if (!currentStepIsValid() || activeStep >= steps.length - 1) return;
+    activeStep += 1;
+    showStep();
+    steps[activeStep].querySelector("input, select, textarea")?.focus();
+  });
+
+  backButton.addEventListener("click", () => {
+    if (activeStep === 0) return;
+    activeStep -= 1;
+    showStep();
+    steps[activeStep].querySelector("input, select, textarea")?.focus();
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!currentStepIsValid()) return;
+    const data = new FormData(form);
+    const lines = [
+      `Даты: ${data.get("dates")}`,
+      `Гостей: ${data.get("guests")}`,
+      `Кто едет: ${data.get("company")}`,
+      `Интересует: ${data.get("format")}`,
+    ];
+    if (String(data.get("note") || "").trim()) {
+      lines.push(`Пожелания: ${String(data.get("note")).trim()}`);
+    }
+    summary.textContent = lines.join("\n");
+    form.hidden = true;
+    $(".selection-progress").hidden = true;
+    result.hidden = false;
+    $("#selection-copy").focus();
+  });
+
+  $("#selection-copy").addEventListener("click", async (event) => {
+    const button = event.currentTarget;
+    try {
+      await navigator.clipboard.writeText(summary.textContent);
+      button.textContent = "Скопировано";
+    } catch {
+      const range = document.createRange();
+      range.selectNodeContents(summary);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      button.textContent = "Выделено — скопируйте";
+    }
+  });
+
+  showStep();
+}
+
 function initPremiumMotion() {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(pointer: fine)").matches;
@@ -569,6 +655,7 @@ function initPremiumMotion() {
 }
 
 initPremiumMotion();
+initSelectionQuiz();
 buildMap();
 renderList();
 new ResizeObserver(resizeMap).observe(viewport);

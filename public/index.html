@@ -73,10 +73,12 @@
         <span>Золотая осень<small>БАЗА ОТДЫХА</small></span>
       </a>
       <nav class="desktop-nav" aria-label="Основная навигация">
-        <a href="#territory">Территория</a>
+        <a href="#about">О базе</a>
         <a href="#stay">Проживание</a>
-        <a href="#stay">Бани и беседки</a>
-        <a href="#contacts">Контакты</a>
+        <a href="#baths-feature">Бани</a>
+        <a href="#gazebos">Беседки</a>
+        <a href="#territory">План</a>
+        <a href="#route">Как добраться</a><a href="#contacts">Контакты</a>
       </nav>
       <a class="header-cta" href="tel:+77763055000">
         <span>Позвонить</span><strong>+7 776 305-50-00</strong>
@@ -88,17 +90,19 @@
         aria-controls="mobile-nav"
       ><span></span><span></span></button>
       <nav id="mobile-nav" hidden aria-label="Мобильная навигация">
-        <a href="#territory">Территория</a>
+        <a href="#about">О базе</a>
         <a href="#stay">Проживание</a>
-        <a href="#stay">Бани и беседки</a>
+        <a href="#baths-feature">Бани</a>
+        <a href="#gazebos">Беседки</a>
+        <a href="#territory">План</a>
         <a href="#contacts">Контакты</a>
         <a href="tel:+77763055000">Позвонить: +7 776 305-50-00</a>
       </nav>
     </header>
     <nav class="mobile-quick-nav" aria-label="Быстрая навигация">
+      <a href="#about">О базе</a>
       <a href="#stay">Домики</a>
       <a href="#river-houses">У реки</a>
-      <a href="#upper-houses">Дальние</a>
       <a href="#baths">Бани</a>
       <a href="#gazebos">Беседки</a>
       <a href="#territory">План</a>
@@ -107,14 +111,14 @@
       <section class="hero wrap" aria-labelledby="hero-title">
         <div class="hero-content">
           <p class="eyebrow"><span></span> БАЗА ОТДЫХА «ЗОЛОТАЯ ОСЕНЬ»</p>
-          <h1 id="hero-title">Останьтесь<br />в <em>моменте.</em></h1>
+          <h1 id="hero-title">Время быть<br /><em>ближе.</em></h1>
           <p class="hero-subtitle">
-            Тёплый свет дерева, высокие окна и тишина за городом. Выберите
-            место для отдыха и узнайте условия у администрации.
+            Домики, бани и беседки среди природы. Выберите место на плане и
+            уточните условия отдыха у администрации.
           </p>
           <div class="hero-actions">
             <a class="button button-light" href="#territory">
-              Найти своё место <svg><use href="#arrow" /></svg>
+              Выбрать место <svg><use href="#arrow" /></svg>
             </a>
             <a class="hero-call" href="tel:+77763055000">
               <span>Позвонить администрации</span>
@@ -188,6 +192,164 @@
         <span><strong>02</strong><small>бани</small></span>
         <span><strong>03</strong><small>беседки</small></span>
       </div>
+      <section class="bath-feature section" id="baths-feature" aria-labelledby="baths-feature-title">
+        <div class="wrap bath-feature-grid">
+          <figure class="bath-feature-image">
+            <img src="./assets/images/demo/bathhouse.jpg" alt="Демо-иллюстрация деревянной бани; это не фотография объекта базы" loading="lazy" decoding="async" />
+            <figcaption>Демо-иллюстрация</figcaption>
+          </figure>
+          <div class="bath-feature-copy">
+            <p class="eyebrow">БАНИ НА ТЕРРИТОРИИ</p>
+            <h2 id="baths-feature-title">Время для<br /><em>перезагрузки.</em></h2>
+            <p>На плане базы отмечены две бани. Формат посещения, оснащение, стоимость и доступность уточняйте у администрации.</p>
+            <div class="bath-feature-meta"><strong>02</strong><span>бани на плане</span></div>
+            <button class="text-link" data-select="bath-1">Посмотреть расположение <svg><use href="#arrow" /></svg></button>
+          </div>
+        </div>
+      </section>
+      <section class="stay-section section wrap" id="stay">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">ЧТО ЕСТЬ НА ТЕРРИТОРИИ</p>
+            <h2>Выберите формат<br /><em>отдыха.</em></h2>
+          </div>
+          <a class="text-link" href="#territory"
+            >Открыть план <svg><use href="#arrow" /></svg
+          ></a>
+        </div>
+        <div class="stay-grid">
+          <article class="stay-card" id="aframe-card">
+            <div class="stay-art stay-art-photo">
+              <img src="./assets/images/objects/a-frame/lounge-window.jpg" alt="Настоящее фото интерьера большого A-frame с панорамным окном" loading="lazy" decoding="async" />
+              <span class="art-number">01 / БОЛЬШОЙ ДОМИК</span>
+              <span class="image-kind image-kind-real">Фото объекта</span>
+              <strong class="stay-count stay-count-word">A-frame</strong>
+              <span class="art-caption">панорамное остекление и интерьер из дерева</span>
+            </div>
+            <div class="stay-copy">
+              <h3>Большой A-frame</h3>
+              <p>Ваш большой домик с панорамным остеклением. Вместимость, стоимость и подробные условия уточняются у администрации.</p>
+              <button class="text-link" data-select="a-frame">Фото и расположение <svg><use href="#arrow" /></svg></button>
+            </div>
+          </article>
+          <article class="stay-card" id="river-houses">
+            <div class="stay-art stay-art-photo">
+              <img src="./assets/images/demo/river-cabins.jpg" alt="Демо-иллюстрация деревянного домика у реки, не фотография объекта базы" loading="lazy" decoding="async" />
+              <span class="art-number">02 / ПРОЖИВАНИЕ</span>
+              <span class="image-kind">Демо-иллюстрация</span>
+              <strong class="stay-count">7</strong>
+              <span class="art-caption">небольших домиков вдоль реки</span>
+            </div>
+            <div class="stay-copy">
+              <h3>Домики у реки</h3>
+              <p>Семь домиков этой категории отмечены на плане вдоль реки. Фото каждого домика, описание и условия добавим после подтверждения.</p>
+              <button class="text-link" data-select="river-1">Расположение и детали <svg><use href="#arrow" /></svg></button>
+            </div>
+          </article>
+          <article class="stay-card" id="upper-houses">
+            <div class="stay-art stay-art-photo">
+              <img src="./assets/images/demo/upper-cabins.jpg" alt="Демо-иллюстрация двух домиков среди деревьев, не фотография объектов базы" loading="lazy" decoding="async" />
+              <span class="art-number">03 / ПРОЖИВАНИЕ</span>
+              <span class="image-kind">Демо-иллюстрация</span>
+              <strong class="stay-count">2</strong>
+              <span class="art-caption">домика в верхней части территории</span>
+            </div>
+            <div class="stay-copy">
+              <h3>Дальние домики</h3>
+              <p>Два домика расположены в верхней части территории. Их фотографии, характеристики и условия проживания уточняются.</p>
+              <button class="text-link" data-select="upper-1">Расположение и детали <svg><use href="#arrow" /></svg></button>
+            </div>
+          </article>
+          <article class="stay-card" id="baths">
+            <div class="stay-art stay-art-photo">
+              <img src="./assets/images/demo/bathhouse.jpg" alt="Демо-иллюстрация деревянной бани, не фотография объекта базы" loading="lazy" decoding="async" />
+              <span class="art-number">04 / ТЕПЛО И ОТДЫХ</span>
+              <span class="image-kind">Демо-иллюстрация</span>
+              <strong class="stay-count">2</strong>
+              <span class="art-caption">бани на территории</span>
+            </div>
+            <div class="stay-copy">
+              <h3>Бани</h3>
+              <p>На генплане отмечены две бани. Оснащение, формат посещения, стоимость и доступность нужно уточнить у администрации.</p>
+              <button class="text-link" data-select="bath-1">Расположение и детали <svg><use href="#arrow" /></svg></button>
+            </div>
+          </article>
+          <article class="stay-card" id="gazebos">
+            <div class="stay-art stay-art-photo">
+              <img src="./assets/images/demo/gazebo.jpg" alt="Демо-иллюстрация деревянной беседки, не фотография объекта базы" loading="lazy" decoding="async" />
+              <span class="art-number">05 / ОТДЫХ НА ПРИРОДЕ</span>
+              <span class="image-kind">Демо-иллюстрация</span>
+              <strong class="stay-count">3</strong>
+              <span class="art-caption">беседки на территории</span>
+            </div>
+            <div class="stay-copy">
+              <h3>Беседки</h3>
+              <p>Три беседки показаны на плане отдельными объектами. Вместимость и условия использования уточняются.</p>
+              <button class="text-link" data-select="gazebo-1">Расположение и детали <svg><use href="#arrow" /></svg></button>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="selection-section section" id="selection" aria-labelledby="selection-title">
+        <div class="wrap selection-layout">
+          <div class="selection-intro">
+            <p class="eyebrow">ПОДБОР ЗА МИНУТУ</p>
+            <h2 id="selection-title">Расскажите<br /><em>о поездке.</em></h2>
+            <p>Пять коротких вопросов помогут подготовить детали для разговора с администрацией. Форма не проверяет свободные даты и не оформляет бронирование.</p>
+            <div class="selection-contact"><span>Нужна помощь?</span><a href="tel:+77763055000">+7 776 305-50-00</a></div>
+          </div>
+          <div class="selection-panel">
+            <div class="selection-progress" aria-live="polite"><span id="selection-progress-label">Вопрос 1 из 5</span><span class="selection-progress-track"><span id="selection-progress-fill"></span></span></div>
+            <form id="selection-form">
+              <fieldset class="selection-step" data-step="0">
+                <legend>Когда планируете отдых?</legend>
+                <label for="selection-dates">Желаемые даты</label>
+                <input id="selection-dates" name="dates" type="text" placeholder="Например, 12–14 июля" autocomplete="off" required />
+              </fieldset>
+              <fieldset class="selection-step" data-step="1" hidden>
+                <legend>Сколько будет гостей?</legend>
+                <label for="selection-guests">Количество человек</label>
+                <input id="selection-guests" name="guests" type="number" min="1" inputmode="numeric" placeholder="Укажите число гостей" required />
+              </fieldset>
+              <fieldset class="selection-step" data-step="2" hidden>
+                <legend>Кто едет?</legend>
+                <label for="selection-company">Состав компании</label>
+                <select id="selection-company" name="company" required>
+                  <option value="" selected disabled>Выберите вариант</option>
+                  <option>Семья</option><option>Пара</option><option>Компания друзей</option><option>Другое</option>
+                </select>
+              </fieldset>
+              <fieldset class="selection-step" data-step="3" hidden>
+                <legend>Что вас интересует?</legend>
+                <label for="selection-format">Формат отдыха</label>
+                <select id="selection-format" name="format" required>
+                  <option value="" selected disabled>Выберите вариант</option>
+                  <option>Домик</option><option>Большой A-frame</option><option>Баня</option><option>Беседка</option><option>Пока выбираю</option>
+                </select>
+              </fieldset>
+              <fieldset class="selection-step" data-step="4" hidden>
+                <legend>Что важно учесть?</legend>
+                <label for="selection-note">Комментарий (необязательно)</label>
+                <textarea id="selection-note" name="note" rows="3" placeholder="Пожелания или вопрос"></textarea>
+              </fieldset>
+              <div class="selection-actions">
+                <button class="selection-back" type="button" id="selection-back" hidden>Назад</button>
+                <button class="button button-green" type="button" id="selection-next">Далее <svg><use href="#arrow" /></svg></button>
+                <button class="button button-green" type="submit" id="selection-submit" hidden>Подготовить итоги <svg><use href="#arrow" /></svg></button>
+              </div>
+            </form>
+            <div class="selection-result" id="selection-result" role="status" hidden>
+              <h3>Детали для разговора</h3>
+              <pre id="selection-summary"></pre>
+              <div class="selection-actions">
+                <button class="selection-back" type="button" id="selection-copy">Скопировать</button>
+                <a class="button button-green" href="tel:+77763055000">Позвонить <svg><use href="#arrow" /></svg></a>
+              </div>
+              <p class="selection-hint">Ваши ответы не отправляются и не сохраняются на сайте. Перед поездкой подтвердите условия и наличие мест у администрации.</p>
+            </div>
+          </div>
+        </div>
+      </section>
       <section
         class="territory-section section"
         id="territory"
@@ -292,89 +454,6 @@
           >
         </div>
       </section>
-      <section class="stay-section section wrap" id="stay">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">ЧТО ЕСТЬ НА ТЕРРИТОРИИ</p>
-            <h2>Выберите формат<br /><em>отдыха.</em></h2>
-          </div>
-          <a class="text-link" href="#territory"
-            >Открыть план <svg><use href="#arrow" /></svg
-          ></a>
-        </div>
-        <div class="stay-grid">
-          <article class="stay-card" id="aframe-card">
-            <div class="stay-art stay-art-photo">
-              <img src="./assets/images/objects/a-frame/lounge-window.jpg" alt="Настоящее фото интерьера большого A-frame с панорамным окном" loading="lazy" decoding="async" />
-              <span class="art-number">01 / БОЛЬШОЙ ДОМИК</span>
-              <span class="image-kind image-kind-real">Фото объекта</span>
-              <strong class="stay-count stay-count-word">A-frame</strong>
-              <span class="art-caption">панорамное остекление и интерьер из дерева</span>
-            </div>
-            <div class="stay-copy">
-              <h3>Большой A-frame</h3>
-              <p>Ваш большой домик с панорамным остеклением. Вместимость, стоимость и подробные условия уточняются у администрации.</p>
-              <button class="text-link" data-select="a-frame">Фото и расположение <svg><use href="#arrow" /></svg></button>
-            </div>
-          </article>
-          <article class="stay-card" id="river-houses">
-            <div class="stay-art stay-art-photo">
-              <img src="./assets/images/demo/river-cabins.jpg" alt="Демо-иллюстрация деревянного домика у реки, не фотография объекта базы" loading="lazy" decoding="async" />
-              <span class="art-number">02 / ПРОЖИВАНИЕ</span>
-              <span class="image-kind">Демо-иллюстрация</span>
-              <strong class="stay-count">7</strong>
-              <span class="art-caption">небольших домиков вдоль реки</span>
-            </div>
-            <div class="stay-copy">
-              <h3>Домики у реки</h3>
-              <p>Семь домиков этой категории отмечены на плане вдоль реки. Фото каждого домика, описание и условия добавим после подтверждения.</p>
-              <button class="text-link" data-select="river-1">Расположение и детали <svg><use href="#arrow" /></svg></button>
-            </div>
-          </article>
-          <article class="stay-card" id="upper-houses">
-            <div class="stay-art stay-art-photo">
-              <img src="./assets/images/demo/upper-cabins.jpg" alt="Демо-иллюстрация двух домиков среди деревьев, не фотография объектов базы" loading="lazy" decoding="async" />
-              <span class="art-number">03 / ПРОЖИВАНИЕ</span>
-              <span class="image-kind">Демо-иллюстрация</span>
-              <strong class="stay-count">2</strong>
-              <span class="art-caption">домика в верхней части территории</span>
-            </div>
-            <div class="stay-copy">
-              <h3>Дальние домики</h3>
-              <p>Два домика расположены в верхней части территории. Их фотографии, характеристики и условия проживания уточняются.</p>
-              <button class="text-link" data-select="upper-1">Расположение и детали <svg><use href="#arrow" /></svg></button>
-            </div>
-          </article>
-          <article class="stay-card" id="baths">
-            <div class="stay-art stay-art-photo">
-              <img src="./assets/images/demo/bathhouse.jpg" alt="Демо-иллюстрация деревянной бани, не фотография объекта базы" loading="lazy" decoding="async" />
-              <span class="art-number">04 / ТЕПЛО И ОТДЫХ</span>
-              <span class="image-kind">Демо-иллюстрация</span>
-              <strong class="stay-count">2</strong>
-              <span class="art-caption">бани на территории</span>
-            </div>
-            <div class="stay-copy">
-              <h3>Бани</h3>
-              <p>На генплане отмечены две бани. Оснащение, формат посещения, стоимость и доступность нужно уточнить у администрации.</p>
-              <button class="text-link" data-select="bath-1">Расположение и детали <svg><use href="#arrow" /></svg></button>
-            </div>
-          </article>
-          <article class="stay-card" id="gazebos">
-            <div class="stay-art stay-art-photo">
-              <img src="./assets/images/demo/gazebo.jpg" alt="Демо-иллюстрация деревянной беседки, не фотография объекта базы" loading="lazy" decoding="async" />
-              <span class="art-number">05 / ОТДЫХ НА ПРИРОДЕ</span>
-              <span class="image-kind">Демо-иллюстрация</span>
-              <strong class="stay-count">3</strong>
-              <span class="art-caption">беседки на территории</span>
-            </div>
-            <div class="stay-copy">
-              <h3>Беседки</h3>
-              <p>Три беседки показаны на плане отдельными объектами. Вместимость и условия использования уточняются.</p>
-              <button class="text-link" data-select="gazebo-1">Расположение и детали <svg><use href="#arrow" /></svg></button>
-            </div>
-          </article>
-        </div>
-      </section>
       <section class="how-section section" id="how-to">
         <div class="wrap">
           <div class="section-heading">
@@ -403,6 +482,28 @@
           </ol>
         </div>
       </section>
+      <section class="faq-section section" id="questions" aria-labelledby="faq-title">
+        <div class="wrap faq-layout">
+          <div class="faq-intro">
+            <p class="eyebrow">ОТВЕТЫ НА ВОПРОСЫ</p>
+            <h2 id="faq-title">Перед<br /><em>поездкой.</em></h2>
+            <p>Если не нашли нужный ответ, позвоните администрации.</p>
+            <a class="text-link" href="tel:+77763055000">Задать вопрос <svg><use href="#arrow" /></svg></a>
+          </div>
+          <div class="faq-list">
+            <details><summary>Как выбрать домик или беседку?</summary><p>Откройте план территории и выберите объект. Категории и расположение показаны также в карточках на странице.</p></details>
+            <details><summary>Как узнать стоимость и свободные даты?</summary><p>Онлайн-календаря и расчёта стоимости на сайте нет. Актуальные цены и доступность уточняйте у администрации по телефону.</p></details>
+            <details><summary>Можно ли забронировать место через сайт?</summary><p>Сайт не принимает и не подтверждает бронирования. Позвоните администрации, чтобы обсудить поездку и договориться об условиях.</p></details>
+            <details><summary>Как узнать адрес и маршрут?</summary><p>Точный адрес и маршрут до базы уточните у администрации по телефону: +7 776 305-50-00.</p></details>
+          </div>
+        </div>
+      </section>
+      <section class="route-section" id="route" aria-label="Связь с администрацией">
+        <div class="wrap route-card">
+          <img src="./assets/images/objects/reception/building.jpg" alt="Фотография здания администрации базы отдыха" loading="lazy" decoding="async" />
+          <div><p class="eyebrow">КАК ДОБРАТЬСЯ</p><h2>Маршрут подскажет<br /><em>администрация.</em></h2><p>Позвоните, чтобы уточнить адрес, дорогу и актуальные условия посещения.</p><a class="button button-light" href="tel:+77763055000">+7 776 305-50-00 <svg><use href="#arrow" /></svg></a></div>
+        </div>
+      </section>
       <section class="contact-section wrap" id="contacts">
         <div>
           <p class="eyebrow">АДМИНИСТРАЦИЯ БАЗЫ ОТДЫХА</p>
@@ -424,7 +525,7 @@
       </section>
     </main>
     <footer class="site-footer wrap">
-      <a class="brand" href="#"
+      <a class="brand" href="#main"
         ><svg><use href="#leaf" /></svg
         ><span>Золотая осень<small>БАЗА ОТДЫХА</small></span></a
       >
