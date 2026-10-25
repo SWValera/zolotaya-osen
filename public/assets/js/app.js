@@ -525,7 +525,7 @@ function initPremiumMotion() {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(pointer: fine)").matches;
   const revealItems = $$(
-    ".intro > div, .nature-strip > span, .section-heading, .stay-card, .steps-list > li, .contact-section > div",
+    ".intro > div, .about-photo, .nature-strip > span, .section-heading, .stay-card, .steps-list > li, .contact-section > div",
   );
 
   if (!reduceMotion && "IntersectionObserver" in window) {
@@ -548,7 +548,7 @@ function initPremiumMotion() {
   }
 
   if (reduceMotion || !finePointer) return;
-  $$('[data-tilt], .stay-card').forEach((element) => {
+  $$('[data-tilt], .stay-card, .about-photo').forEach((element) => {
     element.addEventListener("pointermove", (event) => {
       if (event.pointerType !== "mouse") return;
       const rect = element.getBoundingClientRect();
