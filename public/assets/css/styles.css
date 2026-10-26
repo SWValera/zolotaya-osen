@@ -1506,6 +1506,192 @@ dialog[open] {
   }
 }
 
+/* Keep the phone and 2GIS shortcuts aligned as one header action group. */
+.header-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: clamp(9px, 1.3vw, 16px);
+}
+.header-map-link {
+  display: grid;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid #d3bb8d;
+  border-radius: 50%;
+  background: #d3bb8d;
+  box-shadow: 0 5px 15px #08150f26, inset 0 1px #fff8e7;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+.header-map-link img {
+  display: block;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px #0b17132e;
+}
+.header-map-link:hover {
+  transform: translateY(-2px);
+  background: #e2d1ac;
+  box-shadow: 0 8px 18px #08150f35, inset 0 1px #fff8e7;
+}
+.header-map-link:focus-visible {
+  outline: 2px solid #f0dfb4;
+  outline-offset: 3px;
+}
+.mobile-quick-nav a[href="#route"] {
+  color: #e3c98f;
+}
+@media (min-width: 761px) and (max-width: 900px) {
+  .site-header.wrap {
+    padding-inline: 22px;
+  }
+  .desktop-nav {
+    display: none;
+  }
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex: 0 0 40px;
+    width: 40px;
+    height: 42px;
+  }
+  .menu-toggle span {
+    width: 23px;
+    height: 1px;
+    background: #f1ede2;
+  }
+  #mobile-nav {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 22px;
+    left: 22px;
+    z-index: 40;
+    padding: 10px;
+    border: 1px solid #d9cfbb;
+    border-radius: 14px;
+    color: var(--forest-deep);
+    background: #f8f4ea;
+    box-shadow: 0 20px 48px #07130e3b;
+  }
+  #mobile-nav a {
+    display: block;
+    padding: 12px;
+    border-bottom: 1px solid #e8e2d5;
+  }
+  #mobile-nav a:last-child {
+    border: 0;
+  }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .site-header.wrap {
+    gap: 12px;
+    padding-inline: 20px;
+  }
+  .desktop-nav {
+    gap: 9px;
+  }
+  .desktop-nav a {
+    font-size: 10px;
+  }
+  .header-actions {
+    gap: 8px;
+  }
+  .header-cta {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    min-height: 40px;
+    padding: 0;
+    place-content: center;
+    border-radius: 50%;
+    font-size: 0;
+  }
+  .header-cta span,
+  .header-cta strong {
+    display: none;
+  }
+  .header-cta::after {
+    content: "☎";
+    font-size: 16px;
+  }
+  .header-map-link {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
+  .header-map-link img {
+    width: 23px;
+    height: 23px;
+  }
+}
+@media (max-width: 760px) {
+  .site-header.wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto 40px;
+    gap: 8px;
+    padding-inline: 12px;
+  }
+  .brand {
+    min-width: 0;
+    gap: 6px;
+  }
+  .brand-logo {
+    flex-basis: 44px;
+    width: 44px;
+    height: 44px;
+  }
+  .brand > span {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+  #mobile-nav {
+    top: calc(100% + 8px);
+    border-radius: 14px;
+  }
+  .header-actions {
+    gap: 8px;
+  }
+  .header-cta,
+  .header-map-link {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+    min-height: 40px;
+  }
+  .header-cta {
+    display: grid;
+    place-content: center;
+  }
+  .header-cta::after {
+    content: "☎";
+    font-size: 16px;
+  }
+  .header-map-link img {
+    width: 23px;
+    height: 23px;
+  }
+  .menu-toggle {
+    width: 40px;
+    height: 42px;
+  }
+}
+@media (max-width: 380px) {
+  .brand-logo {
+    flex-basis: 38px;
+    width: 38px;
+    height: 38px;
+  }
+  .brand > span {
+    font-size: 14px;
+  }
+}
+
 /* Booking/contact action and opening status on accommodation cards. */
 .stay-call {
   width: 100%;
