@@ -4512,6 +4512,29 @@ h2 em {
 .route-card .button {
   margin-top: 10px;
 }
+.route-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 22px;
+  margin-top: 20px;
+}
+.route-actions .button {
+  margin-top: 0;
+}
+.route-call-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #f5f1e8;
+  font-size: 13px;
+  border-bottom: 1px solid #f5f1e87a;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+.route-call-link:hover {
+  color: #e5d2a7;
+  border-color: #e5d2a7;
+}
 .contact-section.wrap {
   width: min(var(--measure), calc(100% - 64px));
   margin: 0 auto;
