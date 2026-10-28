@@ -505,7 +505,6 @@ a:focus-visible,
   position: absolute;
   transform-origin: 0 0;
   transition: transform 0.55s cubic-bezier(0.22, 0.7, 0.25, 1);
-  will-change: transform;
   display: block;
   max-width: none;
   stroke: none;
@@ -513,6 +512,7 @@ a:focus-visible,
 }
 .map-viewport.dragging > svg {
   transition: none;
+  will-change: auto;
 }
 .map-viewport.can-drag {
   cursor: grab;

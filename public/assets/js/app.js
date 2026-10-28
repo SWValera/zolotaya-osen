@@ -595,6 +595,7 @@ viewport.addEventListener("touchstart", (event) => {
   if (fullscreen) return;
   const touches = [...event.touches];
   if (touches.length >= 2) {
+    viewport.classList.add("dragging");
     const [first, second] = touches;
     inlineTouch = {
       distance: Math.hypot(second.clientX - first.clientX, second.clientY - first.clientY),
@@ -602,6 +603,7 @@ viewport.addEventListener("touchstart", (event) => {
       cy: (first.clientY + second.clientY) / 2,
     };
   } else if (touches.length === 1) {
+    if (zoom > 1) viewport.classList.add("dragging");
     inlineTouch = { x: touches[0].clientX, y: touches[0].clientY };
   }
 }, { passive: true });
@@ -642,11 +644,17 @@ viewport.addEventListener("touchend", (event) => {
   if (fullscreen) return;
   if (event.touches.length === 1) {
     inlineTouch = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+    if (zoom > 1) viewport.classList.add("dragging");
+    else viewport.classList.remove("dragging");
   } else {
     inlineTouch = null;
+    viewport.classList.remove("dragging");
   }
 }, { passive: true });
-viewport.addEventListener("touchcancel", () => { inlineTouch = null; }, { passive: true });
+viewport.addEventListener("touchcancel", () => {
+  inlineTouch = null;
+  viewport.classList.remove("dragging");
+}, { passive: true });
 viewport.addEventListener(
   "wheel",
   (e) => {
