@@ -145,9 +145,6 @@ function transform() {
   clampPosition();
   map.style.transform = `translate(${x}px,${y}px) scale(${baseScale * zoom})`;
   viewport.classList.toggle("can-drag", zoom > 1);
-  $("#zoom-level").textContent = `${Math.round(zoom * 100)}%`;
-  $("#zoom-in").disabled = zoom >= 4;
-  $("#zoom-out").disabled = zoom <= 1;
   hideTooltip();
 }
 function resizeMap() {
@@ -363,7 +360,11 @@ function toggleFullscreen(force) {
   fullscreen = force ?? !fullscreen;
   if (fullscreen && window.matchMedia("(max-width: 760px)").matches) {
     fullscreenFocus = document.activeElement;
-    fullscreenPlaceholder = document.createComment("map-fullscreen-placeholder");
+    fullscreenPlaceholder = document.createElement("div");
+    fullscreenPlaceholder.className = "map-fullscreen-placeholder";
+    fullscreenPlaceholder.setAttribute("aria-hidden", "true");
+    fullscreenPlaceholder.style.height = `${shell.offsetHeight}px`;
+    fullscreenPlaceholder.style.width = "100%";
     shell.before(fullscreenPlaceholder);
     document.body.append(shell);
   }
@@ -418,9 +419,6 @@ function toggleFullscreen(force) {
 }
 
 $("#fullscreen").onclick = () => toggleFullscreen();
-$("#zoom-in").onclick = () => setZoom(zoom * 1.35);
-$("#zoom-out").onclick = () => setZoom(zoom / 1.35);
-$("#zoom-reset").onclick = resetMap;
 $$(".dialog-close").forEach(
   (b) => (b.onclick = () => b.closest("dialog").close()),
 );
@@ -589,6 +587,66 @@ viewport.addEventListener("lostpointercapture", releasePointer);
 viewport.addEventListener("pointerleave", (e) => {
   if (!viewport.hasPointerCapture(e.pointerId)) releasePointer(e);
 });
+
+// In the inline mobile map, keep one-finger vertical page scrolling native.
+// Take over only a two-finger gesture or a one-finger drag after zooming in.
+let inlineTouch = null;
+viewport.addEventListener("touchstart", (event) => {
+  if (fullscreen) return;
+  const touches = [...event.touches];
+  if (touches.length >= 2) {
+    const [first, second] = touches;
+    inlineTouch = {
+      distance: Math.hypot(second.clientX - first.clientX, second.clientY - first.clientY),
+      cx: (first.clientX + second.clientX) / 2,
+      cy: (first.clientY + second.clientY) / 2,
+    };
+  } else if (touches.length === 1) {
+    inlineTouch = { x: touches[0].clientX, y: touches[0].clientY };
+  }
+}, { passive: true });
+viewport.addEventListener("touchmove", (event) => {
+  if (fullscreen) return;
+  const touches = [...event.touches];
+  if (touches.length >= 2) {
+    event.preventDefault();
+    const [first, second] = touches;
+    const distance = Math.hypot(second.clientX - first.clientX, second.clientY - first.clientY);
+    const cx = (first.clientX + second.clientX) / 2;
+    const cy = (first.clientY + second.clientY) / 2;
+    if (inlineTouch?.distance > 0) {
+      const bounds = viewport.getBoundingClientRect();
+      const nextZoom = Math.min(4, Math.max(1, zoom * distance / inlineTouch.distance));
+      const oldCx = inlineTouch.cx - bounds.left;
+      const oldCy = inlineTouch.cy - bounds.top;
+      x = cx - bounds.left - ((oldCx - x) * nextZoom) / zoom;
+      y = cy - bounds.top - ((oldCy - y) * nextZoom) / zoom;
+      zoom = nextZoom;
+      movedUntil = performance.now() + 400;
+      transform();
+    }
+    inlineTouch = { distance, cx, cy };
+    return;
+  }
+  if (touches.length === 1 && zoom > 1 && inlineTouch && "x" in inlineTouch) {
+    event.preventDefault();
+    const touch = touches[0];
+    x += touch.clientX - inlineTouch.x;
+    y += touch.clientY - inlineTouch.y;
+    inlineTouch = { x: touch.clientX, y: touch.clientY };
+    movedUntil = performance.now() + 400;
+    transform();
+  }
+}, { passive: false });
+viewport.addEventListener("touchend", (event) => {
+  if (fullscreen) return;
+  if (event.touches.length === 1) {
+    inlineTouch = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+  } else {
+    inlineTouch = null;
+  }
+}, { passive: true });
+viewport.addEventListener("touchcancel", () => { inlineTouch = null; }, { passive: true });
 viewport.addEventListener(
   "wheel",
   (e) => {
