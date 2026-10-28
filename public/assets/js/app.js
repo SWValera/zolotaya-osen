@@ -28,6 +28,7 @@ let zoom = 1,
   baseScale = 1;
 let fullscreen = false;
 let fullscreenFocus = null;
+let fullscreenPlaceholder = null;
 let inertElements = [];
 let movedUntil = 0;
 const pointers = new Map();
@@ -360,6 +361,13 @@ function phoneLabel(phone) {
 
 function toggleFullscreen(force) {
   fullscreen = force ?? !fullscreen;
+  if (fullscreen && window.matchMedia("(max-width: 760px)").matches) {
+    fullscreenFocus = document.activeElement;
+    fullscreenPlaceholder = document.createComment("map-fullscreen-placeholder");
+    shell.before(fullscreenPlaceholder);
+    document.body.append(shell);
+  }
+  if (fullscreen && !fullscreenPlaceholder) fullscreenFocus = document.activeElement;
   shell.classList.toggle("is-fullscreen", fullscreen);
   $("#fullscreen").innerHTML = fullscreen
     ? "Закрыть карту <span>×</span>"
@@ -369,11 +377,7 @@ function toggleFullscreen(force) {
     fullscreen ? "Закрыть полноэкранную карту" : "Открыть карту на весь экран",
   );
   $("#fullscreen").setAttribute("aria-pressed", fullscreen);
-  $("#map-help").textContent = fullscreen
-    ? "Два пальца — масштаб · Перетаскивание — перемещение"
-    : "Нажмите на объект, чтобы узнать больше";
   if (fullscreen) {
-    fullscreenFocus = document.activeElement;
     shell.setAttribute("role", "dialog");
     shell.setAttribute("aria-modal", "true");
     shell.setAttribute("aria-label", "Карта территории на весь экран");
@@ -393,6 +397,11 @@ function toggleFullscreen(force) {
     }
     $("#fullscreen").focus();
   } else {
+    if (fullscreenPlaceholder?.parentNode) {
+      fullscreenPlaceholder.before(shell);
+      fullscreenPlaceholder.remove();
+      fullscreenPlaceholder = null;
+    }
     shell.removeAttribute("role");
     shell.removeAttribute("aria-modal");
     shell.removeAttribute("aria-label");

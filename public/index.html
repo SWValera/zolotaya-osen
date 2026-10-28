@@ -317,8 +317,7 @@
           <div class="map-layout">
             <div class="map-shell" id="map-shell">
               <div class="map-top">
-                <span><span class="live-dot"></span> Генплан территории</span
-                ><button
+                <button
                   id="fullscreen"
                   class="map-expand"
                   aria-label="Открыть карту на весь экран"
@@ -331,7 +330,7 @@
                 class="map-viewport"
                 id="map-viewport"
                 aria-label="Интерактивный генплан"
-                aria-describedby="map-help"
+                aria-describedby="map-gesture-help"
               >
                 <svg
                   id="territory-map"
@@ -355,9 +354,7 @@
                 ><button id="zoom-out" aria-label="Отдалить карту">−</button
                 ><button id="zoom-reset" aria-label="Общий вид карты">↺</button>
               </div>
-              <div class="map-bottom" id="map-help">
-                Нажмите на объект, чтобы узнать больше
-              </div>
+              <span id="map-gesture-help" class="sr-only">Откройте карту на весь экран, чтобы увеличивать её и перемещать двумя пальцами. Нажмите на объект, чтобы узнать больше.</span>
             </div>
             <aside class="map-directory" aria-label="Список объектов">
               <div class="directory-heading">
