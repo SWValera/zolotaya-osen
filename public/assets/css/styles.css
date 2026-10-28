@@ -1801,6 +1801,10 @@ dialog[open] {
   object-position: center top;
 }
 
+#aframe-card .stay-art-photo img[data-gallery-index="0"] {
+  object-position: center top;
+}
+
 @media (max-width: 600px) {
   .stay-call {
     min-height: 50px;
