@@ -63,6 +63,20 @@ function renderList() {
   const items = objects
     .filter((o) => o.type === currentFilter)
     .sort((a, b) => {
+      if (currentFilter === "house") {
+        const group = (object) => {
+          if (object.id === "a-frame") return 0;
+          if (object.id.startsWith("river-")) return 1;
+          if (object.id.startsWith("upper-")) return 2;
+          return 3;
+        };
+        const firstGroup = group(a);
+        const secondGroup = group(b);
+        if (firstGroup !== secondGroup) return firstGroup - secondGroup;
+        const number = (object) => Number(object.name.match(/№\s*(\d+)/)?.[1] || 0);
+        const byNumber = number(a) - number(b);
+        if (byNumber) return byNumber;
+      }
       const first = mapPosition(a);
       const second = mapPosition(b);
       return second.y - first.y || first.x - second.x;
