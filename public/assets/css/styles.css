@@ -5961,7 +5961,19 @@ body {
   box-shadow: 0 12px 28px #07170f45, inset 0 1px #fff9e7a3;
 }
 .contact-illustration {
-  box-shadow: inset 0 0 55px #d8c18f10, 0 14px 45px #07170f1c;
+  width: 230px;
+  height: 230px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: none;
+}
+.contact-brand-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 .site-footer {
   color: #637064;
