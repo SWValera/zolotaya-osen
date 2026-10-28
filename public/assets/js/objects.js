@@ -114,7 +114,12 @@ export const objects = [
     "house",
     "Нижний домик слева на плане, ближе к зоне бассейна. Пока не принимает гостей; открытие готовится.",
     "306,686 378,684 404,750 376,768 296,750",
-    { status: "comingSoon" },
+    {
+      status: "comingSoon",
+      photos: [
+        { src: "./assets/images/objects/river/river-shore.jpg?v=20261028", alt: "Песчаный берег реки и зона отдыха у воды" },
+      ],
+    },
   ),
   object(
     "upper-1",
@@ -122,7 +127,12 @@ export const objects = [
     "house",
     "Один из двух домиков в верхней части территории. Описание интерьера и условия проживания появятся после подтверждения.",
     "438,160 480,144 523,159 526,227 478,240 435,224",
-    { status: "comingSoon" },
+    {
+      status: "comingSoon",
+      photos: [
+        { src: "./assets/images/objects/upper-houses/cabin.jpg?v=20261028", alt: "Деревянный домик в окружении деревьев" },
+      ],
+    },
   ),
   object(
     "upper-2",
@@ -213,7 +223,12 @@ export const objects = [
     "gazebo",
     "Нижняя беседка, ближе к администрации. Условия посещения будут добавлены после подтверждения.",
     "772,719 816,743 810,794 773,812 732,795 730,744",
-    { status: "comingSoon" },
+    {
+      status: "comingSoon",
+      photos: [
+        { src: "./assets/images/objects/gazebo/glazed-gazebo.jpg?v=20261028", alt: "Кирпичная беседка с панорамными окнами" },
+      ],
+    },
   ),
   object(
     "pool",
