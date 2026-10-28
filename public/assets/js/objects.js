@@ -117,7 +117,7 @@ export const objects = [
     {
       status: "comingSoon",
       photos: [
-        { src: "./assets/images/objects/river/river-shore.jpg?v=20261028", alt: "Песчаный берег реки и зона отдыха у воды" },
+        { src: "./assets/images/objects/river/cabins-example.jpg?v=20261028", alt: "Семь домиков слева на территории базы отдыха" },
       ],
     },
   ),
@@ -258,6 +258,11 @@ export const objects = [
     "place",
     "Прибрежная зона вдоль домиков отмечена на предоставленном генплане. Условия доступа уточняются.",
     "191,339 241,350 201,706 146,701",
+    {
+      photos: [
+        { src: "./assets/images/objects/river/river-shore.jpg?v=20261028", alt: "Песчаный берег реки и пляжная зона" },
+      ],
+    },
   ),
   object(
     "fishing",
@@ -265,6 +270,11 @@ export const objects = [
     "place",
     "Место для рыбалки отмечено в верхней части берега. Правила и условия посещения уточняются.",
     "119,169 211,170 209,222 119,213",
+    {
+      photos: [
+        { src: "./assets/images/objects/river/river-shore.jpg?v=20261028", alt: "Берег реки и зона отдыха у воды" },
+      ],
+    },
   ),
   object(
     "parking",

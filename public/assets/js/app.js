@@ -597,7 +597,6 @@ viewport.addEventListener(
 
 function initPremiumMotion() {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const finePointer = window.matchMedia("(pointer: fine)").matches;
   const revealItems = $$(
     ".intro > div, .about-photo, .nature-strip > span, .section-heading, .stay-card, .steps-list > li, .contact-section > div",
   );
@@ -621,25 +620,6 @@ function initPremiumMotion() {
     revealItems.forEach((element) => observer.observe(element));
   }
 
-  if (reduceMotion || !finePointer) return;
-  $$('[data-tilt], .stay-card, .about-photo').forEach((element) => {
-    element.addEventListener("pointermove", (event) => {
-      if (event.pointerType !== "mouse") return;
-      const rect = element.getBoundingClientRect();
-      const horizontal = (event.clientX - rect.left) / rect.width - 0.5;
-      const vertical = (event.clientY - rect.top) / rect.height - 0.5;
-      element.style.setProperty("--tilt-x", `${vertical * -5}deg`);
-      element.style.setProperty("--tilt-y", `${horizontal * 7}deg`);
-      element.style.setProperty("--light-x", `${(horizontal + 0.5) * 100}%`);
-      element.style.setProperty("--light-y", `${(vertical + 0.5) * 100}%`);
-    });
-    element.addEventListener("pointerleave", () => {
-      element.style.setProperty("--tilt-x", "0deg");
-      element.style.setProperty("--tilt-y", "0deg");
-      element.style.setProperty("--light-x", "50%");
-      element.style.setProperty("--light-y", "50%");
-    });
-  });
 }
 
 initPremiumMotion();

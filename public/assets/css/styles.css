@@ -170,6 +170,7 @@ a:focus-visible,
 .desktop-nav a {
   padding-block: 10px;
   border-bottom: 1px solid transparent;
+  white-space: nowrap;
 }
 .desktop-nav a:hover {
   border-color: var(--ink);
@@ -881,7 +882,6 @@ a:focus-visible,
 .object-dialog::backdrop,
 .contact-dialog::backdrop {
   background: #192e2338;
-  backdrop-filter: blur(2px);
 }
 dialog[open] {
   animation: dialog-in 0.25s ease;
@@ -1538,10 +1538,20 @@ dialog[open] {
   height: 24px;
   overflow: visible;
 }
+.header-tiktok-link {
+  border-color: #f8f7f2;
+  background: #f8f7f2;
+}
+.header-tiktok-link:hover {
+  background: #fff;
+}
 .header-map-link:hover {
   transform: translateY(-2px);
   background: #e2d1ac;
   box-shadow: 0 8px 18px #08150f35, inset 0 1px #fff8e7;
+}
+.header-map-link.header-tiktok-link:hover {
+  background: #fff;
 }
 .header-map-link:focus-visible {
   outline: 2px solid #f0dfb4;
@@ -1550,7 +1560,7 @@ dialog[open] {
 .mobile-quick-nav a[href="#route"] {
   color: #e3c98f;
 }
-@media (min-width: 761px) and (max-width: 900px) {
+@media (min-width: 761px) and (max-width: 1300px) {
   .site-header.wrap {
     padding-inline: 22px;
   }
@@ -1783,10 +1793,9 @@ dialog[open] {
   text-align: center;
   text-transform: none;
   white-space: nowrap;
-  backdrop-filter: blur(10px);
 }
 
-/* Crop the source screenshot's embedded image-search badge at its lower edge. */
+/* Keep the source image-search badge outside the seven-house card photo. */
 #river-houses .stay-art-photo img {
   height: 130%;
   object-position: center top;
@@ -2012,7 +2021,6 @@ dialog[open] {
   background: #14251fc7;
   font-size: 8px;
   letter-spacing: 0.5px;
-  backdrop-filter: blur(8px);
 }
 .image-kind-real {
   color: #17251e;
@@ -2115,8 +2123,8 @@ dialog[open] {
   }
   .hero-photo-frame > img {
     object-position: center 54%;
-    transform: scale(1.02);
-    animation: imageBreathe 20s ease-in-out infinite alternate;
+    transform: none;
+    animation: none;
   }
   .hero-photo-caption {
     right: 19px;
@@ -2204,7 +2212,7 @@ dialog[open] {
   grid-template-rows: minmax(205px, 24vw) minmax(170px, 18vw);
   gap: 12px;
   margin-top: 25px;
-  perspective: 1400px;
+  perspective: none;
 }
 .about-photo {
   --tilt-x: 0deg;
@@ -2218,9 +2226,9 @@ dialog[open] {
   color: #f6f0e2;
   background: #1a2a21;
   border: 1px solid #d4cab5;
-  transform: perspective(1200px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
-  transform-style: preserve-3d;
-  transition: transform 450ms cubic-bezier(0.2, 0.7, 0.15, 1), box-shadow 280ms ease;
+  transform: none;
+  transform-style: flat;
+  transition: box-shadow 280ms ease;
 }
 .about-photo:first-child {
   grid-column: 1;
@@ -2236,12 +2244,12 @@ dialog[open] {
   height: 100%;
   object-fit: cover;
   inset: 0;
-  transition: transform 800ms cubic-bezier(0.2, 0.7, 0.15, 1), filter 500ms ease;
+  transition: none;
 }
 .about-photo::after {
   position: absolute;
   inset: 30% 0 0;
-  background: linear-gradient(0deg, #0b1712c7, transparent);
+  display: none;
   content: "";
   pointer-events: none;
 }
@@ -2267,8 +2275,8 @@ dialog[open] {
   box-shadow: 0 20px 44px #17261c2b;
 }
 .about-photo:hover img {
-  transform: scale(1.055);
-  filter: saturate(1.06);
+  transform: none;
+  filter: none;
 }
 .nature-strip {
   grid-template-columns: repeat(3, 1fr);
@@ -2357,7 +2365,6 @@ body {
   top: 0;
   z-index: 20;
   background: #f5f3ebed;
-  backdrop-filter: blur(14px);
   border-bottom: 1px solid #d9ddd280;
 }
 .brand > svg {
@@ -2676,7 +2683,7 @@ body {
 .stay-art-photo::after {
   position: absolute;
   z-index: -1;
-  background: linear-gradient(0deg, #15231ed9, #15231e12 78%);
+  display: none;
   content: "";
   inset: 0;
 }
@@ -3172,7 +3179,6 @@ h2 em {
   color: #f2eee3;
   background: #14251ff5;
   border-bottom: 1px solid #ffffff14;
-  backdrop-filter: blur(18px);
 }
 .brand {
   gap: 13px;
@@ -3419,8 +3425,8 @@ h2 em {
   position: relative;
   z-index: 2;
   transform-style: preserve-3d;
-  transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) rotateZ(-1deg);
-  animation: frameLift 8s ease-in-out infinite;
+  transform: none;
+  animation: none;
   transition: transform 500ms cubic-bezier(0.2, 0.7, 0.15, 1);
   box-shadow: 0 40px 70px #07110c66;
 }
@@ -3448,8 +3454,8 @@ h2 em {
   height: 100%;
   object-fit: cover;
   object-position: center 50%;
-  transform: translateZ(30px) scale(1.02);
-  animation: imageBreathe 20s ease-in-out infinite alternate;
+  transform: none;
+  animation: none;
 }
 .hero-photo-caption {
   position: absolute;
@@ -3506,7 +3512,6 @@ h2 em {
   border: 1px solid #d7c08f8f;
   border-radius: 50%;
   box-shadow: 0 12px 36px #06110b66, inset 0 0 0 5px #ffffff08;
-  backdrop-filter: blur(12px);
   font-size: 8px;
   letter-spacing: 0.6px;
   transition: transform 300ms ease, background 300ms ease;
@@ -3638,16 +3643,15 @@ h2 em {
   border-radius: 2px;
   background: #fbf8f0;
   box-shadow: 0 12px 30px #342c1b0a;
-  transform: perspective(1100px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
-  transform-style: preserve-3d;
-  transition: transform 380ms cubic-bezier(0.2, 0.7, 0.15, 1), box-shadow 250ms ease;
+  transform: none;
+  transform-style: flat;
+  transition: box-shadow 250ms ease;
 }
 .stay-card::after {
   position: absolute;
   z-index: 2;
   inset: 0;
-  background: radial-gradient(circle at var(--light-x, 50%) var(--light-y, 50%), #fff8e847, transparent 46%);
-  opacity: 0;
+  display: none;
   content: "";
   pointer-events: none;
   transition: opacity 220ms ease;
@@ -3666,7 +3670,7 @@ h2 em {
   transition: transform 700ms cubic-bezier(0.2, 0.7, 0.15, 1);
 }
 .stay-card:hover .stay-art-photo img {
-  transform: scale(1.055);
+  transform: none;
 }
 .art-number {
   color: #506052;
@@ -4116,8 +4120,8 @@ h2 em {
     height: 100%;
     object-fit: cover;
     object-position: center 54%;
-    transform: scale(1.02);
-    animation: imageBreathe 20s ease-in-out infinite alternate;
+    transform: none;
+    animation: none;
   }
   .hero-photo-caption {
     right: 19px;
@@ -4347,8 +4351,8 @@ h2 em {
   display: block;
   object-fit: cover;
   object-position: center 50%;
-  transform: scale(1.015);
-  animation: imageBreathe 22s ease-in-out infinite alternate;
+  transform: none;
+  animation: none;
 }
 .hero-content {
   position: absolute;
@@ -4441,7 +4445,6 @@ h2 em {
   color: #f5f1e8;
   background: #14251fcc;
   border: 1px solid #e5d2a74d;
-  backdrop-filter: blur(10px);
 }
 .hero-photo-caption strong {
   font-size: 16px;
@@ -5740,7 +5743,7 @@ body {
   box-shadow: 0 20px 60px #23392b12, inset 0 1px #ffffffd9;
 }
 .about-gallery {
-  perspective: 1100px;
+  perspective: none;
 }
 .about-photo {
   border: 1px solid #fff8e8a8;
@@ -5750,8 +5753,9 @@ body {
   transition: transform 450ms cubic-bezier(.2,.75,.25,1), box-shadow 450ms ease;
 }
 .about-photo img {
-  filter: saturate(.96) contrast(1.02);
-  transition: transform 800ms cubic-bezier(.2,.75,.25,1), filter 500ms ease;
+  filter: none;
+  transform: none;
+  transition: none;
 }
 .about-photo:hover {
   box-shadow: 0 28px 56px #14271f40;
@@ -5791,17 +5795,17 @@ body {
   border: 1px solid #d8c18f8a;
   border-radius: 22px;
   box-shadow: 0 34px 80px #08160f6b, inset 0 1px #ffffff58;
-  transform: perspective(1300px) rotateY(2deg);
+  transform: none;
 }
 .bath-feature-image img {
-  filter: saturate(.95) contrast(1.04);
+  filter: none;
 }
 .bath-feature-image::after {
   position: absolute;
   inset: 0;
   border: 1px solid #ffffff24;
   border-radius: inherit;
-  background: linear-gradient(145deg, #ffffff1b, transparent 34%, #08180c28 100%);
+  display: none;
   content: "";
   pointer-events: none;
 }
@@ -5830,21 +5834,21 @@ body {
   background:
     linear-gradient(145deg, #fffdf8 0%, #f6f1e6 72%, #eee8d9 100%);
   box-shadow: 0 12px 34px #172a2017, inset 0 1px #ffffff;
-  transform: perspective(1200px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
-  transform-style: preserve-3d;
-  transition: transform 500ms cubic-bezier(.2,.75,.25,1), box-shadow 500ms ease, border-color 350ms ease;
+  transform: none;
+  transform-style: flat;
+  transition: box-shadow 350ms ease, border-color 350ms ease;
 }
 .motion-ready .stay-card.is-visible {
-  transform: perspective(1200px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transform: none;
 }
 .stay-card::before {
   position: absolute;
   z-index: 2;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(360px circle at var(--light-x) var(--light-y), #ffffff68, transparent 66%);
+  display: none;
   content: "";
-  opacity: .55;
+  opacity: 0;
   pointer-events: none;
   transition: opacity 350ms ease;
 }
@@ -5853,15 +5857,16 @@ body {
   border: 1px solid #eadfc8;
   border-radius: 14px;
   box-shadow: 0 12px 26px #12251d27, inset 0 1px #ffffff4a;
-  transform: translateZ(20px);
-  transform-style: preserve-3d;
+  transform: none;
+  transform-style: flat;
 }
 .stay-art-photo img {
-  filter: saturate(.93) contrast(1.04);
-  transition: transform 900ms cubic-bezier(.2,.75,.25,1), filter 500ms ease;
+  filter: none;
+  transform: none;
+  transition: none;
 }
 .stay-copy {
-  transform: translateZ(12px);
+  transform: none;
 }
 .stay-copy h3 {
   color: #183126;
@@ -5962,7 +5967,7 @@ body {
 }
 .route-card > img {
   border-radius: 0;
-  filter: saturate(.88) contrast(1.05);
+  filter: none;
 }
 .contact-section.wrap {
   position: relative;
@@ -5993,14 +5998,14 @@ body {
     box-shadow: 0 30px 68px #15291f2c, inset 0 1px #ffffff;
   }
   .motion-ready .stay-card.is-visible:hover {
-    transform: perspective(1200px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-4px);
+    transform: none;
   }
   .stay-card:hover::before {
     opacity: .9;
   }
   .stay-card:hover .stay-art-photo img {
-    transform: scale(1.055);
-    filter: saturate(1.03) contrast(1.04);
+    transform: none;
+    filter: none;
   }
   .faq-list details:hover {
     transform: translateY(-2px);
