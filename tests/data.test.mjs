@@ -1,5 +1,9 @@
 import assert from "node:assert/strict";
+import { existsSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { objects, statuses, mapConfig } from "../public/assets/js/objects.js";
+const publicRoot = fileURLToPath(new URL("../public/", import.meta.url));
 assert.ok(objects.length >= 22);
 assert.ok(objects.filter((o) => o.type === "house").length >= 10);
 assert.ok(objects.filter((o) => o.type === "bath").length >= 2);
@@ -23,6 +27,16 @@ for (const object of objects) {
     assert.ok(field in object, `${object.id}: ${field}`);
   assert.ok(statuses[object.status]);
   assert.ok(Array.isArray(object.photos));
+  for (const photo of object.photos) {
+    const src = typeof photo === "string" ? photo : photo.src;
+    if (src.startsWith("./")) {
+      const localPath = src.slice(2).split("?")[0];
+      assert.ok(
+        existsSync(path.join(publicRoot, localPath)),
+        `${object.id}: missing photo ${src}`,
+      );
+    }
+  }
   if (object.points)
     for (const point of object.points.split(" ")) {
       const [x, y] = point.split(",").map(Number);
