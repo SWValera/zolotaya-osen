@@ -11,6 +11,7 @@ try {
     for (const object of objects) {
       const entry = settings.objects?.[object.id];
       if (!entry) continue;
+      if (typeof entry.description === "string") object.description = entry.description;
       object.price = entry.price ?? null;
       object.priceUnit = entry.priceUnit || object.priceUnit;
       if (Array.isArray(entry.photos)) object.photos = entry.photos;

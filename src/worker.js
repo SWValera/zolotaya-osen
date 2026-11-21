@@ -34,6 +34,8 @@ function normalizeSettings(input) {
   const entries = {};
   for (const object of catalog) {
     const source = input.objects[object.id] || { price: null, priceUnit: object.priceUnit || "сутки", photos: object.photos || [] };
+    const description = typeof source.description === "string" ? source.description.trim() : object.description;
+    if (description.length > 2_000) throw new Error(`Проверьте описание объекта «${object.name}»: максимум 2 000 символов.`);
     if (!Array.isArray(source.photos) || source.photos.length > 50) throw new Error(`Проверьте фотографии объекта «${object.name}».`);
     let price = null;
     if (source.price !== null && source.price !== undefined) {
@@ -47,7 +49,7 @@ function normalizeSettings(input) {
       if (!photo.src.startsWith("./assets/") && !/^\/api\/media\/[a-f0-9]{32}$/.test(photo.src)) throw new Error("Недопустимый адрес фотографии.");
       return { src: photo.src, alt: String(photo.alt || object.name).slice(0, 180) };
     });
-    entries[object.id] = { price, priceUnit, photos };
+    entries[object.id] = { description, price, priceUnit, photos };
   }
   return { version: 1, contact: { phone }, objects: entries, updatedAt: new Date().toISOString() };
 }

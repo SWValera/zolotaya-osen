@@ -31,6 +31,7 @@ function renderObjects() {
       <div class="photo-actions"><button type="button" data-move="-1" aria-label="Переместить фото выше">↑ Выше</button><button type="button" data-move="1" aria-label="Переместить фото ниже">↓ Ниже</button><button class="delete" type="button" data-delete="${index}">Удалить</button></div>
     </figure>`).join("");
     return `<details class="object-card"><summary><span class="object-name">${escapeHTML(item.name)}</span><span class="object-type">${escapeHTML(types[item.type] || "Объект")}</span></summary><div class="object-content">
+      <label class="description-field">Описание объекта<textarea data-description="${item.id}" maxlength="2000" rows="5" placeholder="Добавьте описание объекта">${escapeHTML(entry.description)}</textarea><span class="hint">До 2 000 символов. Отображается в карточке объекта на сайте.</span></label>
       ${includePrice ? `<div class="price-row"><label>Цена, ₸<input data-price="${item.id}" type="number" min="0" max="100000000" step="100" inputmode="numeric" value="${amount}" placeholder="Уточняется" /></label><label>Единица<select data-unit="${item.id}"><option value="сутки" ${entry.priceUnit === "сутки" ? "selected" : ""}>За сутки</option><option value="час" ${entry.priceUnit === "час" ? "selected" : ""}>За час</option><option value="посещение" ${entry.priceUnit === "посещение" ? "selected" : ""}>За посещение</option></select></label><p class="hint">Оставьте поле пустым, если цена уточняется.</p></div>` : ""}
       <div class="gallery-heading"><h3>Фотографии (${entry.photos.length})</h3><label class="add-photo">＋ Добавить фото<input data-add="${item.id}" type="file" accept="image/*" multiple hidden /></label></div>
       ${entry.photos.length ? `<div class="photo-grid">${photos}</div>` : `<p class="empty-gallery">Пока нет фотографий. Добавьте их с телефона или компьютера.</p>`}
@@ -46,8 +47,11 @@ function populate() {
 }
 function normalize(settings) {
   if (!settings?.contact || !settings?.objects) throw new Error("Настройки сайта пока не загружены.");
-  for (const item of catalog) settings.objects[item.id] ||= { price: null, priceUnit: item.priceUnit || "сутки", photos: item.photos || [] };
-  for (const item of catalog) settings.objects[item.id].photos ||= [];
+  for (const item of catalog) settings.objects[item.id] ||= { description: item.description, price: null, priceUnit: item.priceUnit || "сутки", photos: item.photos || [] };
+  for (const item of catalog) {
+    settings.objects[item.id].description ??= item.description;
+    settings.objects[item.id].photos ||= [];
+  }
   return settings;
 }
 async function loadSettings() {
@@ -66,6 +70,11 @@ async function compress(file) {
 function validate() {
   const phone = $("phone").value.trim(), digits = phone.replace(/\D/g, "");
   if (digits.length < 10 || digits.length > 15) throw new Error("Проверьте номер телефона: нужно от 10 до 15 цифр.");
+  for (const item of catalog) {
+    const description = document.querySelector(`[data-description="${item.id}"]`).value.trim();
+    if (description.length > 2000) throw new Error(`Описание объекта «${item.name}» слишком длинное.`);
+    data.objects[item.id].description = description;
+  }
   for (const item of catalog) if (["house", "bath", "gazebo"].includes(item.type)) {
     const raw = document.querySelector(`[data-price="${item.id}"]`).value.trim();
     const amount = raw === "" ? null : Number(raw);
@@ -132,7 +141,7 @@ $("settings-form").addEventListener("submit", async (event) => {
     const payload = { version: 1, contact: { phone: data.contact.phone }, updatedAt: data.updatedAt, objects: {} };
     for (const item of catalog) {
       const entry = data.objects[item.id];
-      payload.objects[item.id] = { price: entry.price, priceUnit: entry.priceUnit, photos: entry.photos.map(({ src, alt }) => ({ src, alt })) };
+      payload.objects[item.id] = { description: entry.description, price: entry.price, priceUnit: entry.priceUnit, photos: entry.photos.map(({ src, alt }) => ({ src, alt })) };
     }
     const saved = await api("/api/admin/settings", { method: "PUT", body: payload }); data = normalize(saved.data);
     for (const id of removedMedia) {
