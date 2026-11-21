@@ -10,7 +10,7 @@ for (const path of [passwordFile, hashFile]) {
 }
 const password = randomBytes(24).toString("base64url");
 const salt = randomBytes(16);
-const iterations = 150_000;
+const iterations = 100_000;
 const derived = pbkdf2Sync(password, salt, iterations, 32, "sha256");
 const encoded = `pbkdf2$${iterations}$${salt.toString("hex")}$${derived.toString("hex")}`;
 await mkdir(dirname(passwordFile), { recursive: true, mode: 0o700 });

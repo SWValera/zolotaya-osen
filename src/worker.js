@@ -62,6 +62,7 @@ async function settings(env, request) {
 
 async function verifyPassword(password, encoded) {
   if (typeof password !== "string" || password.length > 256 || !encoded) return false;
+  encoded = String(encoded).trim();
   const [algorithm, count, salt, expected] = encoded.split("$");
   const iterations = Number(count);
   if (algorithm !== "pbkdf2" || !Number.isInteger(iterations) || iterations < 100_000 || iterations > 500_000 || !/^([a-f0-9]{2}){16,64}$/.test(salt || "") || !/^[a-f0-9]{64}$/.test(expected || "")) return false;
@@ -100,13 +101,18 @@ function sameOrigin(request) {
 }
 
 async function rateLimited(request, env) {
-  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
-  const digest = hex(await crypto.subtle.digest("SHA-256", enc.encode(ip)));
-  const key = `login-attempts:${digest}`;
-  const attempts = Number(await env.SITE_DATA.get(key) || 0);
-  if (attempts >= 8) return true;
-  await env.SITE_DATA.put(key, String(attempts + 1), { expirationTtl: 900 });
-  return false;
+  try {
+    const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+    const digest = hex(await crypto.subtle.digest("SHA-256", enc.encode(ip)));
+    const key = `login-attempts:${digest}`;
+    const attempts = Number(await env.SITE_DATA.get(key) || 0);
+    if (attempts >= 8) return true;
+    await env.SITE_DATA.put(key, String(attempts + 1), { expirationTtl: 900 });
+    return false;
+  } catch (error) {
+    console.error("Admin login rate-limit storage failed", error?.name || "Error");
+    throw error;
+  }
 }
 
 async function api(request, env, url) {
@@ -172,6 +178,7 @@ export default {
         if (!(["GET", "POST", "PUT", "DELETE"].includes(request.method))) return json({ error: "Метод не поддерживается." }, 405, { Allow: "GET, POST, PUT, DELETE" });
         try { return await api(request, env, url); }
         catch (error) {
+          console.error("Worker API handler error", url.pathname, error?.name || "Error", String(error?.message || "").slice(0, 160));
           const badRequest = error instanceof SyntaxError || ["Ожидаются данные формы.", "Слишком большой запрос."].includes(error.message) || error.message.startsWith("Проверьте") || error.message.startsWith("Цена ") || error.message.startsWith("Недопустимый") || error.message.startsWith("Некорректные") || error.message.startsWith("Загрузите");
           return json({ error: badRequest ? (error instanceof SyntaxError ? "Некорректные данные." : error.message) : "Не удалось выполнить действие. Повторите попытку." }, badRequest ? 400 : 503);
         }
