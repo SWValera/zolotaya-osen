@@ -1,6 +1,6 @@
 # Публикация: GitHub → Cloudflare Workers Static Assets
 
-Сайт опубликован на Cloudflare Workers Static Assets: **https://zolotayaosen.kz/**; технический адрес **https://zolotaya-osen.arshavin-ivan-mail-ru.workers.dev/** остаётся доступен. Исходники хранятся в [SWValera/zolotaya-osen](https://github.com/SWValera/zolotaya-osen), production branch — `main`. R2, D1, KV, серверная логика и платные API не используются.
+Сайт опубликован на Cloudflare Workers Static Assets: **https://zolotayaosen.kz/**; технический адрес **https://zolotaya-osen.arshavin-ivan-mail-ru.workers.dev/** остаётся доступен. Исходники хранятся в [SWValera/zolotaya-osen](https://github.com/SWValera/zolotaya-osen), production branch — `main`. Worker обслуживает парольную админку; Cloudflare KV хранит её настройки и изображения.
 
 ## 1. GitHub-репозиторий
 
@@ -22,7 +22,7 @@ cd zolotaya-osen
 - Build command: пустое поле (сборка не нужна); если интерфейс требует команду, используйте `npm run check`.
 - Deploy command: `npx wrangler deploy`.
 - Production branch: `main`.
-- Никакие bindings и секреты приложения не нужны.
+- KV binding `SITE_DATA` задан в `wrangler.jsonc`; Worker secret `ADMIN_PASSWORD_HASH` нужен для входа в админку.
 
 После подключения GitHub коммиты в выбранную ветку будут автоматически публиковаться. У проекта только Static Assets: платные хранилища и серверные вызовы не нужны. Проверьте актуальные лимиты бесплатного плана в своём аккаунте; платные опции не включайте.
 
@@ -52,4 +52,6 @@ npm run seo -- https://zolotayaosen.kz
 
 ## Обновления и кэш
 
-Меняйте информацию об объекте в `public/assets/js/objects.js`; затем commit/push в подключённый репозиторий. JS/CSS требуют перепроверки кэша (`no-cache`), фото кэшируются сутки. При замене фотографии используйте новое имя файла, чтобы посетители сразу получили новую версию. Откат — возврат коммита или предыдущей версии в панели Cloudflare.
+Цены, телефон и фотографии владелец может менять через `/admin/` (устройство входа и редактирования описано в [ADMIN.md](ADMIN.md)). Админка сохраняет настройки и изображения в Cloudflare KV; для обычного обновления повторный deploy не нужен.
+
+Остальные изменения сайта вносятся в исходники и требуют публикации через Cloudflare Workers. JS/CSS требуют перепроверки кэша (`no-cache`), фото кэшируются сутки. При замене существующего исходного файла используйте новое имя, чтобы посетители сразу получили новую версию. Откат изменений админки — возврат коммита настроек в GitHub.

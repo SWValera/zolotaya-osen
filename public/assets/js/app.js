@@ -1,5 +1,28 @@
 import { objects, types, statuses, mapConfig, contact } from "./objects.js";
 
+// The Worker serves editable settings from its private KV store.
+try {
+  const response = await fetch(
+    `/api/settings?v=${Date.now()}`,
+    { cache: "no-store", credentials: "same-origin", signal: AbortSignal.timeout(2500) },
+  );
+  if (response.ok) {
+    const settings = await response.json();
+    for (const object of objects) {
+      const entry = settings.objects?.[object.id];
+      if (!entry) continue;
+      object.price = entry.price ?? null;
+      object.priceUnit = entry.priceUnit || object.priceUnit;
+      if (Array.isArray(entry.photos)) object.photos = entry.photos;
+    }
+    const phone = String(settings.contact?.phone || "");
+    if (/^[+\d() .-]{10,32}$/.test(phone) && phone.replace(/\D/g, "").length >= 10)
+      contact.phone = phone.replace(/[^+\d]/g, "");
+  }
+} catch {
+  // Keep the baked-in settings if the public settings endpoint is unavailable.
+}
+
 const $ = (selector, parent = document) => parent.querySelector(selector);
 const $$ = (selector, parent = document) => [
   ...parent.querySelectorAll(selector),
@@ -719,4 +742,24 @@ new ResizeObserver(resizeMap).observe(viewport);
 $("#year").textContent = new Date().getFullYear();
 if (contact.phone) {
   $("#contact-caption").textContent = `Телефон администрации: ${phoneLabel(contact.phone)}`;
+  const label = phoneLabel(contact.phone);
+  $$('a[href^="tel:"]').forEach((link) => {
+    link.href = `tel:${contact.phone}`;
+    if (link.classList.contains("header-cta")) $("strong", link).textContent = label;
+    else if (link.classList.contains("route-call-link")) link.textContent = `Позвонить: ${label}`;
+    else if (link.closest(".site-footer")) link.textContent = label;
+    else if (link.textContent.includes("+7 776 305-50-00"))
+      link.childNodes[0].textContent = link.childNodes[0].textContent.replace("+7 776 305-50-00", label);
+  });
+  const businessData = $('script[type="application/ld+json"]');
+  if (businessData) {
+    try {
+      const json = JSON.parse(businessData.textContent);
+      json.telephone = contact.phone;
+      businessData.textContent = JSON.stringify(json);
+    } catch { /* Keep existing structured data if it cannot be parsed. */ }
+  }
+  $$('meta[name="description"],meta[property="og:description"],meta[name="twitter:description"]').forEach((meta) => {
+    meta.content = meta.content.replace("+7 776 305-50-00", label);
+  });
 }

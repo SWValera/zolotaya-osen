@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#17382b" />
+    <title>Админка — Золотая осень</title>
+    <link rel="icon" href="../assets/images/brand/zolotaya-osen-logo.jpg" />
+    <link rel="stylesheet" href="./admin.css" />
+    <link rel="stylesheet" href="./admin-overrides.css" />
+    <script type="module" src="./admin.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Открыть сайт Золотая осень">
+        <img src="../assets/images/brand/zolotaya-osen-logo.jpg" alt="" />
+        <span>Золотая осень<small>УПРАВЛЕНИЕ САЙТОМ</small></span>
+      </a>
+      <a class="site-link" href="/" target="_blank" rel="noopener">Открыть сайт ↗</a>
+    </header>
+    <main>
+      <section id="login" class="login panel" hidden>
+        <p class="eyebrow">АДМИНИСТРАТОР</p>
+        <h1>Изменения на сайте</h1>
+        <p>Войдите, чтобы управлять ценами, фотографиями и телефоном базы.</p>
+        <form id="login-form">
+          <label for="password">Пароль администратора</label>
+          <input id="password" type="password" autocomplete="current-password" required maxlength="256" />
+          <button type="submit">Войти</button>
+        </form>
+      </section>
+
+      <section id="editor" hidden>
+        <div class="heading">
+          <div><p class="eyebrow">АДМИНИСТРАТОР</p><h1>Цены и фотографии</h1><p>Меняйте данные и нажмите «Сохранить».</p></div>
+          <button id="logout" class="button secondary" type="button">Выйти</button>
+        </div>
+        <form id="settings-form">
+          <section class="panel contact-panel">
+            <div><p class="eyebrow">КОНТАКТЫ</p><h2>Телефон администрации</h2><p class="hint">Обновится во всех кнопках звонка на сайте.</p></div>
+            <label class="phone-field" for="phone"><span>Номер телефона</span><input id="phone" type="tel" autocomplete="tel" required maxlength="32" placeholder="+7 776 305-50-00" /></label>
+          </section>
+          <div class="section-heading"><div><p class="eyebrow">ОБЪЕКТЫ БАЗЫ</p><h2>Цены и галереи</h2></div><span class="hint">Фото автоматически сжимаются</span></div>
+          <div id="objects" class="object-groups"></div>
+          <div class="save-bar">
+            <div><strong id="save-state">Все изменения сохранены</strong><small id="updated"></small></div>
+            <button id="save" class="button" type="submit" disabled>Сохранить изменения</button>
+          </div>
+        </form>
+      </section>
+      <p id="status" class="status" role="status" aria-live="polite">Загружаем админку…</p>
+    </main>
+  </body>
+</html>

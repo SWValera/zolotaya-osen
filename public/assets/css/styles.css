@@ -1463,6 +1463,102 @@ dialog[open] {
     transition: none !important;
   }
 }
+.tiktok-promo.wrap {
+  width: min(var(--measure), calc(100% - 64px));
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(18px, 3vw, 34px);
+  margin: 0 auto 54px;
+  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid #b9a575;
+  border-radius: 20px;
+  color: #f5f1e8;
+  background:
+    radial-gradient(ellipse at 95% 0%, #718a6840 0%, transparent 40%),
+    linear-gradient(120deg, #142c22 0%, #204332 100%);
+  box-shadow: 0 18px 46px #172a201c, inset 0 1px #ffffff30;
+}
+.tiktok-promo-mark {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border-radius: 50%;
+  color: #111;
+  background: #f6f1e6;
+}
+.tiktok-promo-mark svg {
+  width: 25px;
+  height: 25px;
+  fill: currentColor;
+  stroke: none;
+}
+.tiktok-promo-copy .eyebrow {
+  margin-bottom: 5px;
+  color: #d5bd8d;
+}
+.tiktok-promo-copy h2 {
+  margin-bottom: 5px;
+  color: #fffaf0;
+  font-size: clamp(22px, 2.4vw, 30px);
+  letter-spacing: -.5px;
+}
+.tiktok-promo-copy > p:last-child {
+  color: #e0e3d9;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.tiktok-promo-link {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 18px;
+  border: 1px solid #e1d2ad;
+  border-radius: 999px;
+  color: #24392d;
+  background: #e4d1a4;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+.tiktok-promo-link:hover {
+  transform: translateY(-1px);
+  background: #f0dfb7;
+}
+.tiktok-promo-link svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+@media (max-width: 760px) {
+  .tiktok-promo.wrap {
+    width: calc(100% - 32px);
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 14px;
+    margin-bottom: 36px;
+    padding: 20px 18px;
+    border-radius: 17px;
+  }
+  .tiktok-promo-mark {
+    width: 46px;
+    height: 46px;
+  }
+  .tiktok-promo-mark svg {
+    width: 21px;
+    height: 21px;
+  }
+  .tiktok-promo-copy h2 {
+    font-size: 22px;
+  }
+  .tiktok-promo-link {
+    grid-column: 1 / -1;
+    justify-self: start;
+    min-height: 44px;
+  }
+}
 
 /* Keep the phone, 2GIS and TikTok shortcuts aligned as one header action group. */
 .header-actions {

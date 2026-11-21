@@ -1,0 +1,219 @@
+{
+  "version": 1,
+  "contact": {
+    "phone": "+77763055000"
+  },
+  "objects": {
+    "river-1": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": []
+    },
+    "river-2": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": []
+    },
+    "river-3": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": []
+    },
+    "river-4": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": []
+    },
+    "river-5": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": []
+    },
+    "river-6": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": []
+    },
+    "river-7": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": [
+        {
+          "src": "./assets/images/objects/river/cabins-example.jpg?v=20261028",
+          "alt": "Семь домиков слева на территории базы отдыха"
+        }
+      ]
+    },
+    "upper-1": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": [
+        {
+          "src": "./assets/images/objects/upper-houses/cabin.jpg?v=20261028",
+          "alt": "Деревянный домик в окружении деревьев"
+        }
+      ]
+    },
+    "upper-2": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": []
+    },
+    "a-frame": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": [
+        {
+          "src": "./assets/images/objects/a-frame/current/01-exterior.jpg?v=20261028",
+          "alt": "Большой A-frame с панорамным остеклением снаружи"
+        },
+        {
+          "src": "./assets/images/objects/a-frame/current/02-dining-evening.jpg?v=20261028",
+          "alt": "Обеденный стол и зона отдыха у панорамного окна A-frame"
+        },
+        {
+          "src": "./assets/images/objects/a-frame/current/03-living-window.jpg?v=20261028",
+          "alt": "Гостиная с панорамным окном и обеденной зоной"
+        },
+        {
+          "src": "./assets/images/objects/a-frame/current/04-living-stairs.jpg?v=20261028",
+          "alt": "Интерьер A-frame с лестницей на второй уровень"
+        },
+        {
+          "src": "./assets/images/objects/a-frame/current/05-dining-stairs.jpg?v=20261028",
+          "alt": "Обеденная зона и лестница в большом A-frame"
+        },
+        {
+          "src": "./assets/images/objects/a-frame/current/06-bedroom-tv.jpg?v=20261028",
+          "alt": "Спальня с телевизором в A-frame"
+        },
+        {
+          "src": "./assets/images/objects/a-frame/current/07-bedroom-stairs.jpg?v=20261028",
+          "alt": "Спальня и лестница на мансарду A-frame"
+        },
+        {
+          "src": "./assets/images/objects/a-frame/current/08-bathroom-sink.jpg?v=20261028",
+          "alt": "Ванная комната с раковиной и зеркалом"
+        },
+        {
+          "src": "./assets/images/objects/a-frame/current/09-bathroom-tub.jpg?v=20261028",
+          "alt": "Ванная комната с ванной в деревянном A-frame"
+        },
+        {
+          "src": "./assets/images/objects/a-frame/current/10-loft-bedroom.jpg?v=20261028",
+          "alt": "Спальное место на мансарде A-frame"
+        }
+      ]
+    },
+    "bath-1": {
+      "price": null,
+      "priceUnit": "час",
+      "photos": []
+    },
+    "bath-2": {
+      "price": null,
+      "priceUnit": "час",
+      "photos": [
+        {
+          "src": "./assets/images/objects/working-bath/lounge.jpg?v=working-bath-1",
+          "alt": "Комната отдыха рабочей бани с диваном и столом"
+        },
+        {
+          "src": "./assets/images/objects/working-bath/lounge-detail.jpg?v=working-bath-1",
+          "alt": "Стол и деревянный буфет в комнате отдыха бани"
+        },
+        {
+          "src": "./assets/images/objects/working-bath/steam-room.jpg?v=working-bath-1",
+          "alt": "Парная бани с деревянными полками и печью"
+        },
+        {
+          "src": "./assets/images/objects/working-bath/steam-room-detail.jpg?v=working-bath-1",
+          "alt": "Печь-каменка и полки в парной"
+        },
+        {
+          "src": "./assets/images/objects/working-bath/shower.jpg?v=working-bath-1",
+          "alt": "Душевая комната при бане"
+        },
+        {
+          "src": "./assets/images/objects/working-bath/bathroom.jpg?v=working-bath-1",
+          "alt": "Санузел и раковина в бане"
+        }
+      ]
+    },
+    "gazebo-1": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": []
+    },
+    "gazebo-2": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": []
+    },
+    "gazebo-3": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": [
+        {
+          "src": "./assets/images/objects/gazebo/glazed-gazebo.jpg?v=20261028",
+          "alt": "Кирпичная беседка с панорамными окнами"
+        }
+      ]
+    },
+    "pool": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": []
+    },
+    "bar": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": []
+    },
+    "reception": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": [
+        {
+          "src": "./assets/images/objects/reception/building.jpg",
+          "alt": "Здание администрации среди сосен, предоставленное владельцем"
+        }
+      ]
+    },
+    "beach": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": [
+        {
+          "src": "./assets/images/objects/river/river-shore.jpg?v=20261028",
+          "alt": "Песчаный берег реки и пляжная зона"
+        }
+      ]
+    },
+    "fishing": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": [
+        {
+          "src": "./assets/images/objects/river/river-shore.jpg?v=20261028",
+          "alt": "Берег реки и зона отдыха у воды"
+        }
+      ]
+    },
+    "parking": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": [
+        {
+          "src": "./assets/images/objects/parking/parking-lot.jpg?v=20261028",
+          "alt": "Парковка базы отдыха с гравийным покрытием и местами для автомобилей"
+        }
+      ]
+    },
+    "entrance": {
+      "price": null,
+      "priceUnit": "сутки",
+      "photos": []
+    }
+  }
+}
