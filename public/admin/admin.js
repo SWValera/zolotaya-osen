@@ -67,11 +67,11 @@ function validate() {
   const phone = $("phone").value.trim(), digits = phone.replace(/\D/g, "");
   if (digits.length < 10 || digits.length > 15) throw new Error("Проверьте номер телефона: нужно от 10 до 15 цифр.");
   for (const item of catalog) if (["house", "bath", "gazebo"].includes(item.type)) {
-    const raw = $(`[data-price="${item.id}"]`).value.trim();
+    const raw = document.querySelector(`[data-price="${item.id}"]`).value.trim();
     const amount = raw === "" ? null : Number(raw);
     if (amount !== null && (!Number.isSafeInteger(amount) || amount < 0 || amount > 100_000_000)) throw new Error(`Проверьте цену объекта «${item.name}».`);
     data.objects[item.id].price = amount === null ? null : { amount, currency: "KZT" };
-    data.objects[item.id].priceUnit = $(`[data-unit="${item.id}"]`).value;
+    data.objects[item.id].priceUnit = document.querySelector(`[data-unit="${item.id}"]`).value;
   }
   data.contact.phone = phone; data.updatedAt = new Date().toISOString();
 }
